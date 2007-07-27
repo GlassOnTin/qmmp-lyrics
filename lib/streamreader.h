@@ -22,11 +22,12 @@
 
 #include <QObject>
 #include <QIODevice>
-#include <QHttp>
 #include <QUrl>
 #define BUFFER_SIZE 524288
 
 class QFileInfo;
+
+class Downloader;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -70,18 +71,17 @@ private slots:
     void downloadFile();
     void cancelDownload();
     void httpRequestFinished(int, bool);
-    void readResponseHeader(const QHttpResponseHeader &responseHeader);
     void updateDataReadProgress(int bytesRead, int totalBytes);
 
 private:
     void fillBuffer();
     QUrl m_url;
-    QHttp* m_http;
     bool m_httpRequestAborted;
     int m_httpGetId;
     int m_pos;
     int m_size;
     QString m_contentType;
+    Downloader *m_downloader;
 };
 
 #endif
