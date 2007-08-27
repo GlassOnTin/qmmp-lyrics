@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#include "settingsdialog.h"
 #include "outputoss.h"
 #include "outputossfactory.h"
 
@@ -35,8 +36,10 @@ Output* OutputOSSFactory::create(QObject* parent)
     return new OutputOSS(parent);
 }
 
-void OutputOSSFactory::showSettings(QWidget*)
+void OutputOSSFactory::showSettings(QWidget* parent)
 {
+    SettingsDialog *s = new SettingsDialog(parent);
+    s -> show();
 }
 
 void OutputOSSFactory::showAbout(QWidget *parent)
