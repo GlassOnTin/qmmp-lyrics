@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +28,7 @@
 
 class DecoderFactory;
 class OutputFactory;
+class VisualFactory;
 
 class InputPluginItem : public QObject
 {
@@ -67,6 +68,25 @@ private:
     QString m_fileName;
     OutputFactory *m_factory;
 
+};
+
+class VisualPluginItem : public QObject
+{
+    Q_OBJECT
+public:
+    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
+
+    ~VisualPluginItem();
+
+    bool isSelected();
+    VisualFactory * factory();
+
+public slots:
+    void select(bool);
+
+private:
+    QString m_fileName;
+    VisualFactory *m_factory;
 };
 
 #endif
