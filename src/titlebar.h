@@ -21,11 +21,12 @@
 #define TITLEBAR_H
 
 #include <QMainWindow>
-#include "pixmapwidget.h"
-
-#include "playlist.h"
 #include <QPoint>
+
+#include "pixmapwidget.h"
+#include "playlist.h"
 #include "mainwindow.h"
+
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -34,7 +35,9 @@ class QMouseEvent;
 
 class Skin;
 class Button;
-
+class SymbolDisplay;
+class TitleBarControl;
+class ShadedVisual;
 
 class TitleBar : public PixmapWidget
 {
@@ -45,10 +48,12 @@ public:
     ~TitleBar();
 
     void setActive(bool);
+    void setInfo(const OutputState &st);
 
 private slots:
     void updateSkin();
     void showMainMenu();
+    void shade();
 
 private:
     Skin *m_skin;
@@ -57,9 +62,14 @@ private:
     Button *m_menu;
     Button *m_minimize;
     Button *m_shade;
+    Button *m_shade2;
     Button *m_close;
-    int x_diff, y_diff;
-    
+    SymbolDisplay *m_currentTime;
+    QString formatTime (int);
+    bool m_shaded;
+    bool m_align;
+    TitleBarControl *m_control;
+    ShadedVisual *m_visual;
 
 protected:
     void mousePressEvent(QMouseEvent*);
