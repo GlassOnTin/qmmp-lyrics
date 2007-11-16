@@ -31,6 +31,7 @@ class QMouseEvent;
 class Skin;
 class MainWindow;
 class Button;
+class ShadedBar;
 
 class EqTitleBar : public PixmapWidget
 {
@@ -41,14 +42,26 @@ public:
     ~EqTitleBar();
 
     void setActive(bool);
+    void setVolume(int left, int right);
+
+private slots:
+    void shade();
+    void updateVolume();
 
 private:
     Skin* m_skin;
     bool m_active;
+    int m_left;
+    int m_right;
     QPoint m_pos;
     QWidget* m_eq;
     MainWindow* m_mw;
     Button* m_close;
+    Button* m_shade;
+    Button* m_shade2;
+    bool m_shaded, m_align;
+    ShadedBar* m_volumeBar;
+    ShadedBar* m_balanceBar;
 
 protected:
     void mousePressEvent(QMouseEvent*);
