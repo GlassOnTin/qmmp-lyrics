@@ -35,6 +35,7 @@ class Skin;
 class InputPluginItem;
 class OutputPluginItem;
 class VisualPluginItem;
+class EffectPluginItem;
 
 class ConfigDialog : public QDialog
 {
@@ -71,6 +72,7 @@ private:
     QList <InputPluginItem*> m_inputPluginItems;
     QList <OutputPluginItem*> m_outputPluginItems;
     QList <VisualPluginItem*> m_visualPluginItems;
+    QList <EffectPluginItem*> m_effectPluginItems;
 };
 
 #endif
