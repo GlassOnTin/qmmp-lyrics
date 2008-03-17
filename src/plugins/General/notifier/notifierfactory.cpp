@@ -34,7 +34,7 @@ const GeneralProperties NotifierFactory::properties() const
     return properties;
 }
 
-General *NotifierFactory::create(QObject *parent)
+General *NotifierFactory::create(Control*, QObject *parent)
 {
     return new Notifier(parent);
 }
@@ -51,7 +51,7 @@ void NotifierFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *NotifierFactory::createTranslator(QObject *parent)
+QTranslator *NotifierFactory::createTranslator(QObject*)
 {
     return 0;
 }
