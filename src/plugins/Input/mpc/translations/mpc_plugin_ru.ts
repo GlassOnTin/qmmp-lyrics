@@ -3,27 +3,27 @@
 <context>
     <name>DecoderMPCFactory</name>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="21"/>
+        <location filename="../decodermpcfactory.cpp" line="26"/>
         <source>Musepack Plugin</source>
         <translation>Модуль Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="35"/>
+        <location filename="../decodermpcfactory.cpp" line="28"/>
         <source>Musepack Files</source>
         <translation>Файлы Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="63"/>
+        <location filename="../decodermpcfactory.cpp" line="82"/>
         <source>About Musepack Audio Plugin</source>
         <translation>Об аудио-модуле Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="64"/>
+        <location filename="../decodermpcfactory.cpp" line="83"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Аудио-модуль Musepack для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="65"/>
+        <location filename="../decodermpcfactory.cpp" line="84"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -31,102 +31,97 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
+        <location filename="../detailsdialog.cpp" line="59"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="31"/>
+        <location filename="../detailsdialog.ui" line="42"/>
         <source>Musepack Info</source>
         <translation>Информация Musepack</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="160"/>
+        <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="63"/>
+        <location filename="../detailsdialog.ui" line="86"/>
         <source>Length:</source>
         <translation>Длительность:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="80"/>
+        <location filename="../detailsdialog.ui" line="103"/>
         <source>Sample rate:</source>
         <translation>Дискретизация:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="100"/>
+        <location filename="../detailsdialog.ui" line="123"/>
         <source>Channels:</source>
         <translation>Каналов:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="136"/>
         <source>File size:</source>
         <translation>Размер файла:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="123"/>
+        <location filename="../detailsdialog.ui" line="146"/>
         <source>Bitrate:</source>
         <translation>Битовая частота:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="150"/>
+        <location filename="../detailsdialog.ui" line="173"/>
         <source>Stream version:</source>
         <translation>Версия потока:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="177"/>
+        <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
         <translation>Путь к файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="187"/>
+        <location filename="../detailsdialog.ui" line="322"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="215"/>
-        <source>Musepack Tag</source>
-        <translation>Musepack-тег</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="230"/>
+        <location filename="../detailsdialog.ui" line="299"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="240"/>
+        <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
         <translation>Номер трека:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="253"/>
+        <location filename="../detailsdialog.ui" line="257"/>
         <source>Year:</source>
         <translation>Год:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="263"/>
+        <location filename="../detailsdialog.ui" line="283"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="273"/>
+        <location filename="../detailsdialog.ui" line="244"/>
         <source>Comment:</source>
         <translation>Комментарий:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="283"/>
+        <location filename="../detailsdialog.ui" line="231"/>
         <source>Album:</source>
         <translation>Альбом:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="293"/>
+        <location filename="../detailsdialog.ui" line="218"/>
         <source>Artist:</source>
         <translation>Исполнитель:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="303"/>
+        <location filename="../detailsdialog.ui" line="205"/>
         <source>Title:</source>
         <translation>Название:</translation>
     </message>
@@ -136,14 +131,19 @@
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../detailsdialog.cpp" line="63"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
+        <location filename="../detailsdialog.cpp" line="66"/>
         <source>KB</source>
         <translation>Кб</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="199"/>
+        <source>APE Tag</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
