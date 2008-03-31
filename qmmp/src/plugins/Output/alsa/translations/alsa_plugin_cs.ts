@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="pl">
-<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
-        <location filename="../outputalsafactory.cpp" line="30"/>
+        <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
         <translation>Plugin ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="47"/>
+        <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
         <translation>O pluginu ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="48"/>
+        <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
         <translation>Výstupní plugin Qmmp ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="49"/>
+        <location filename="../outputalsafactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
