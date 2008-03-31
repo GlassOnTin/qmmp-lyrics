@@ -3,27 +3,27 @@
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="21"/>
+        <location filename="../decoderflacfactory.cpp" line="26"/>
         <source>FLAC Plugin</source>
         <translation>Модуль FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="35"/>
+        <location filename="../decoderflacfactory.cpp" line="28"/>
         <source>FLAC Files</source>
         <translation>Файлы FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="63"/>
+        <location filename="../decoderflacfactory.cpp" line="82"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Об аудио-модуле FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="64"/>
+        <location filename="../decoderflacfactory.cpp" line="83"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Аудио-модуль FLAC для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="65"/>
+        <location filename="../decoderflacfactory.cpp" line="84"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -31,117 +31,117 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="54"/>
+        <location filename="../detailsdialog.cpp" line="61"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../detailsdialog.cpp" line="67"/>
         <source>bits</source>
         <translation>бит</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="31"/>
+        <location filename="../detailsdialog.ui" line="42"/>
         <source>FLAC Info</source>
         <translation>Информация FLAC</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="160"/>
+        <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="63"/>
+        <location filename="../detailsdialog.ui" line="86"/>
         <source>Length:</source>
         <translation>Длительность:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="80"/>
+        <location filename="../detailsdialog.ui" line="103"/>
         <source>Sample rate:</source>
         <translation>Частота сэмплов:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="100"/>
+        <location filename="../detailsdialog.ui" line="123"/>
         <source>Channels:</source>
         <translation>Каналов:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="136"/>
         <source>File size:</source>
         <translation>Размер файла:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="123"/>
+        <location filename="../detailsdialog.ui" line="146"/>
         <source>Bitrate:</source>
         <translation>Битовая частота:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="150"/>
+        <location filename="../detailsdialog.ui" line="173"/>
         <source>Sample width:</source>
         <translation>Ширина кадра:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="177"/>
+        <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
         <translation>Путь к файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="187"/>
+        <location filename="../detailsdialog.ui" line="322"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="215"/>
+        <location filename="../detailsdialog.ui" line="199"/>
         <source>FLAC Tag</source>
         <translation>FLAC-тег</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="230"/>
+        <location filename="../detailsdialog.ui" line="299"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="240"/>
+        <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
         <translation>Номер трека:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="253"/>
+        <location filename="../detailsdialog.ui" line="257"/>
         <source>Year:</source>
         <translation>Год:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="263"/>
+        <location filename="../detailsdialog.ui" line="283"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="273"/>
+        <location filename="../detailsdialog.ui" line="244"/>
         <source>Comment:</source>
         <translation>Комментарий:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="283"/>
+        <location filename="../detailsdialog.ui" line="231"/>
         <source>Album:</source>
         <translation>Альбом:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="293"/>
+        <location filename="../detailsdialog.ui" line="218"/>
         <source>Artist:</source>
         <translation>Исполнитель:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="303"/>
+        <location filename="../detailsdialog.ui" line="205"/>
         <source>Title:</source>
         <translation>Название:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../detailsdialog.cpp" line="65"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="61"/>
+        <location filename="../detailsdialog.cpp" line="68"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
