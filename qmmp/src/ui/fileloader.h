@@ -24,12 +24,12 @@
 #include <QDir>
 #include <QThread>
 
-class MediaFile;
+class PlayListItem;
 
 /*!
  * This class represents fileloader object that 
  * processes file list in separate thread and emits
- * \b newMediaFile(MediaFile*) signal for every newly
+ * \b newPlayListItem(PlayListItem*) signal for every newly
  * created media file.
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -57,7 +57,7 @@ public:
 	  */
 	 void setDirectoryToLoad(const QString&);
 signals:
-		void newMediaFile(MediaFile*);
+		void newPlayListItem(PlayListItem*);
 protected:
 		void addFiles(const QStringList &files);
 		void addDirectory(const QString& s);
