@@ -27,47 +27,47 @@
 
 class UnixDomainSocket;
 class MainWindow;
-class CommandLineOptionManager;
+class BuiltinCommandLineOption;
 
 /*!
- *	QMMPStarter represents wrapper object that is responsible
- * for proper QMMP initialization(only one instance of running 
+ *  QMMPStarter represents wrapper object that is responsible
+ * for proper QMMP initialization(only one instance of running
  * MainWindow) and passing command line args to application.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class QMMPStarter : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     QMMPStarter(int argc,char ** argv,QObject* parent = 0);
-	 ~QMMPStarter();
+    ~QMMPStarter();
 protected slots:
-	 
-	 /*!
-	  * Passes command args to the running application
-	  */
-	 void writeCommand();
-     
-     void readCommand();
+
+    /*!
+     * Passes command args to the running application
+     */
+    void writeCommand();
+
+    void readCommand();
 private:
-	/*!
-	 * Prints usage
-	 */
-	 void printUsage();
-	 
-	 /*!
-	  * Prints version of program
-	  */
-	 void printVersion();
-     
-     void startMainWindow();
+    /*!
+     * Prints usage
+     */
+    void printUsage();
+
+    /*!
+     * Prints version of program
+     */
+    void printVersion();
+
+    void startMainWindow();
 private:
-	 MainWindow* mw;
-     UnixDomainSocket* m_sock;
-	 QString argString;
-     CommandLineOptionManager* m_option_manager;
+    MainWindow* mw;
+    UnixDomainSocket* m_sock;
+    QString argString;
+    BuiltinCommandLineOption* m_option_manager;
 };
 
-#endif 
+#endif
 
 
