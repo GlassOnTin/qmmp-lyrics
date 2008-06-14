@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
-<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -29,7 +28,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Status Icon Plugin Settings</source>
-        <translation>狀態圖像插件設定</translation>
+        <translation type="obsolete">狀態圖像插件設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
@@ -70,6 +69,11 @@
         <location filename="../settingsdialog.ui" line="255"/>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="13"/>
+        <source>Notifier Plugin Settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
