@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,8 +37,7 @@ public:
     SymbolDisplay(QWidget *parent = 0, int digits = 3);
 
     ~SymbolDisplay();
-    void display(const QString&);
-    void display(int);
+
     void setAlignment(Qt::Alignment a)
     {
         m_alignment = a;
@@ -47,6 +46,10 @@ public:
     {
         return m_alignment;
     }
+
+public slots:
+    void display(const QString&);
+    void display(int);
 
 private slots:
     void draw();
