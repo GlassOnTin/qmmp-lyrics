@@ -26,6 +26,7 @@ class QString;
 class QIODevice;
 class QWidget;
 class QTranslator;
+class VolumeControl;
 
 class Decoder;
 class Output;
@@ -43,6 +44,7 @@ public:
     virtual ~OutputFactory() {} 
     virtual const OutputProperties properties() const = 0;
     virtual Output *create(QObject *, bool) = 0;
+    virtual VolumeControl *createVolumeControl(QObject *) = 0;
     virtual void showSettings(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;
     virtual QTranslator *createTranslator(QObject *parent) = 0;
