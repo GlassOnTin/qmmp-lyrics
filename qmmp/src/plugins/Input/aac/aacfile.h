@@ -20,7 +20,14 @@
 #ifndef AACFILE_H
 #define AACFILE_H
 
+
+#include <QMap>
+#include <QString>
+
+#include <qmmp/qmmp.h>
+
 class QIODevice;
+class TagExtractor;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,6 +42,7 @@ public:
     qint64 length();
     quint32 bitrate();
     bool isValid();
+    const QMap<Qmmp::MetaData, QString> metaData();
 
 private:
     void parseADTS();
@@ -42,6 +50,8 @@ private:
     quint32 m_bitrate;
     QIODevice *m_input;
     bool m_isValid;
+    QMap<Qmmp::MetaData, QString> m_metaData;
+    TagExtractor *m_ext;
 };
 
 #endif
