@@ -23,7 +23,6 @@
 #include <QObject>
 
 
-class SongInfo;
 class PlaylistFormat;
 
 /**
