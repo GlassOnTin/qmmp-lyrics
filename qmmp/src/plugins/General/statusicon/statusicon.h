@@ -27,6 +27,7 @@
 #include <qmmp/qmmp.h>
 
 class SoundCore;
+class QEvent;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
