@@ -27,6 +27,7 @@
 #include <qmmp/qmmp.h>
 
 class SoundCore;
+class MediaPlayer;
 class QEvent;
 
 /**
@@ -55,6 +56,7 @@ private:
     bool m_enabled;
     int m_messageDelay;
     SoundCore *m_core;
+    MediaPlayer *m_player;
 };
 
 #endif
