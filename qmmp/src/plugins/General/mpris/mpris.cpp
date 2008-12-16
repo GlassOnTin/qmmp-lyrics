@@ -22,6 +22,7 @@
 
 #include "playerobject.h"
 #include "rootobject.h"
+#include "tracklistobject.h"
 #include "mpris.h"
 
 MPRIS::MPRIS(QObject *parent)
@@ -29,7 +30,9 @@ MPRIS::MPRIS(QObject *parent)
 {
     PlayerObject *player = new PlayerObject(this);
     RootObject *root = new RootObject(this);
+    TrackListObject *trackList = new TrackListObject(this);
     QDBusConnection connection = QDBusConnection::sessionBus();
+    connection.registerObject("/TrackList", trackList, QDBusConnection::ExportAllContents);
     connection.registerObject("/Player", player, QDBusConnection::ExportAllContents);
     connection.registerObject("/", root, QDBusConnection::ExportAllContents);
     connection.registerService("org.mpris.qmmp");
