@@ -22,7 +22,6 @@
 
 #include <QDialog>
 
-
 #include "ui_settingsdialog.h"
 
 /**
@@ -42,7 +41,6 @@ public slots:
 
 private:
     void findCodecs();
-    
     Ui::SettingsDialog ui;
     QList<QTextCodec *> codecs;
 
