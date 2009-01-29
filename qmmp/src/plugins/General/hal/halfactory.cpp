@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#include "settingsdialog.h"
 #include "halplugin.h"
 #include "halfactory.h"
 
@@ -28,8 +29,8 @@ const GeneralProperties HalFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("HAL Plugin");
     properties.shortName = "hal";
-    properties.hasAbout = FALSE;
-    properties.hasSettings = FALSE;
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
     properties.visibilityControl = FALSE;
     return properties;
 }
@@ -39,17 +40,18 @@ General *HalFactory::create(QObject *parent)
     return new HalPlugin(parent);
 }
 
-QDialog *HalFactory::createConfigDialog(QWidget *)
+QDialog *HalFactory::createConfigDialog(QWidget *parent)
 {
-    return 0;
+    return new SettingsDialog(parent);
 }
 
 void HalFactory::showAbout(QWidget *parent)
 {
-    /*QMessageBox::about (parent, tr("About Hal Plugin"),
-                        tr("Qmmp Hal Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
-    //TODO based on solid
+    QMessageBox::about (parent, tr("About HAL Plugin"),
+                        tr("Qmmp HAL Plugin") + "\n" +
+                        tr("This plugin provides removable devices detection using HAL") + "\n" +
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
+                        tr("Based on Solid (KDE hardware library)"));
 }
 
 QTranslator *HalFactory::createTranslator(QObject *parent)
