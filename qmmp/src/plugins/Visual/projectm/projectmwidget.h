@@ -20,11 +20,11 @@
 #ifndef PROJECTMWIDGET_H
 #define PROJECTMWIDGET_H
 
-
-#include "qprojectm.h"
 #include <QGLWidget>
 
-class QProjectM;
+
+class QMenu;
+class projectM;
 
 
 /**
@@ -38,15 +38,30 @@ public:
 
     ~ProjectMWidget();
 
-    QProjectM *projectM();
+    projectM *projectMInstance();
 
 protected:
     virtual void initializeGL();
     virtual void resizeGL(int width, int height);
     virtual void paintGL();
+    virtual void mousePressEvent (QMouseEvent *event);
+
+private slots:
+    void showHelp();
+    void showPresetName();
+    void showTitle();
+    void nextPreset();
+    void previousPreset();
+    void randomPreset();
+    void lockPreset();
+    void fullScreen();
+    void updateTitle();
 
 private:
-   QProjectM *m_projectM;
+    projectM *m_projectM;
+    QMenu *m_menu;
+    void createActions();
+
 
 };
 
