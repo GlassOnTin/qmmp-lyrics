@@ -40,8 +40,7 @@ public:
      */
     enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
     PlayListItem();
-    //PlayListItem(const QString& path);
-    PlayListItem(FileInfo *info, QSettings *settings = 0);
+    PlayListItem(FileInfo *info);
 
     ~PlayListItem();
 
@@ -65,9 +64,6 @@ private:
     FileInfo *m_info;
     bool m_selected;
     bool m_current;
-    bool m_use_meta;
-    bool m_convertUnderscore, m_convertTwenty;
-    QString m_format;
     FLAGS m_flag;
 };
 
