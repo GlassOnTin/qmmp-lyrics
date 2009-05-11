@@ -29,7 +29,7 @@ const GeneralProperties FileOpsFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("File Operations Plugin");
     properties.shortName = "fileops";
-    properties.hasAbout = FALSE;
+    properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     properties.visibilityControl = FALSE;
     return properties;
@@ -47,10 +47,9 @@ QDialog *FileOpsFactory::createConfigDialog(QWidget *parent)
 
 void FileOpsFactory::showAbout(QWidget *parent)
 {
-    /*QMessageBox::about (parent, tr("About Lyrics Plugin"),
-                        tr("Qmmp Lyrics Plugin")+"\n"+
-                        tr("This plugin retrieves lyrics from LyricWiki.org")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+    QMessageBox::about (parent, tr("About File Operations Plugin"),
+                        tr("Qmmp File Operations Plugin")+"\n"+
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *FileOpsFactory::createTranslator(QObject *parent)
