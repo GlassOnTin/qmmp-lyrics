@@ -20,7 +20,7 @@
 
 #include <QtGui>
 
-#include "scrobbler.h"
+#include "scrobblerhandler.h"
 #include "settingsdialog.h"
 #include "scrobblerfactory.h"
 
@@ -37,7 +37,7 @@ const GeneralProperties ScrobblerFactory::properties() const
 
 General *ScrobblerFactory::create(QObject *parent)
 {
-    return new Scrobbler(parent);
+    return new ScrobblerHandler(parent);
 }
 
 QDialog *ScrobblerFactory::createConfigDialog(QWidget *parent)
@@ -55,7 +55,7 @@ void ScrobblerFactory::showAbout(QWidget *parent)
 QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
+    QString locale = QLocale::system().name();
     translator->load(QString(":/scrobbler_plugin_") + locale);
     return translator;
 }
