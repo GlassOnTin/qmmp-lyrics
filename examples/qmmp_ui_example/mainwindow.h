@@ -21,10 +21,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <qmmp/qmmp.h>
+#include <ui_mainwindow.h>
+
+class QSlider;
+class QLabel;
 
 class PlayListModel;
+class MediaPlayer;
+class SoundCore;
 
-class MainWindow : public QWidget
+
+class MainWindow : public QMainWindow
 {
 Q_OBJECT
 public:
@@ -34,9 +42,20 @@ public:
 
 private slots:
     void addFiles();
+    void playSelected(const QModelIndex &i);
+    void updatePosition(qint64 pos);
+    void seek();
+    void showState(Qmmp::State);
+    void showBitrate(int);
 
 private:
+
     PlayListModel *m_model;
+    Ui::MainWindow ui;
+    MediaPlayer *m_player;
+    QSlider *m_slider;
+    QLabel *m_label;
+    SoundCore *m_core;
 
 };
 
