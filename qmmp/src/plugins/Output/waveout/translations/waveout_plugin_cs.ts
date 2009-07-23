@@ -9,22 +9,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="53"/>
+        <location filename="../outputwaveoutfactory.cpp" line="54"/>
         <source>About WaveOut Output Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="54"/>
+        <location filename="../outputwaveoutfactory.cpp" line="55"/>
         <source>Qmmp WaveOut Output Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="55"/>
+        <location filename="../outputwaveoutfactory.cpp" line="56"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../outputwaveoutfactory.cpp" line="56"/>
+        <location filename="../outputwaveoutfactory.cpp" line="57"/>
         <source>Based on aacDECdrop player</source>
         <translation type="unfinished"></translation>
     </message>
