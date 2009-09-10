@@ -28,6 +28,7 @@
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmp/metadatamodel.h>
 
 
 
@@ -43,9 +44,8 @@ public:
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
     Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    //FileInfo *createFileInfo(const QString &source);
     QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    QObject* showDetails(QWidget *parent, const QString &path);
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);
