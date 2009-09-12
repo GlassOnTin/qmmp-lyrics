@@ -43,7 +43,7 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
+    Decoder *create(QIODevice *, const QString &);
     QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
     MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
