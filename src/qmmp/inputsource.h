@@ -23,23 +23,37 @@
 
 #include <QObject>
 #include <QString>
+#include <QStringList>
 #include <QIODevice>
+#include "inputsourcefactory.h"
 
+/*!
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class InputSource : public QObject
 {
 Q_OBJECT
 public:
-    InputSource(const QString &source, QObject *parent = 0);
-    QIODevice *ioDevice();
+    InputSource(const QString &url, QObject *parent = 0);
+    virtual QIODevice *ioDevice() = 0;
+    virtual bool initialize() = 0;
+    virtual bool isReady() = 0;
     const QString url();
 
+    static InputSource *create(const QString &url, QObject *parent = 0);
+    /*!
+     * Returns a list of transport factories.
+     */
+    static QList<InputSourceFactory *> *factories();
+
 signals:
-    void readyRead();
+    void ready(InputSource *);
 
 private:
     QString m_url;
-    QIODevice *m_device;
-    bool m_isValid;
+    static void checkFactories();
+    static QList<InputSourceFactory*> *m_factories;
+    static QStringList m_files;
 };
 
 #endif // INPUTSOURCE_H
