@@ -46,14 +46,14 @@ public:
     bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
     bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
 };
-/*! @brief %Effect plugin interface (effect factory).
+/*! @brief Effect plugin interface (effect factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class EffectFactory
 {
 public:
     /*!
-     * Returns general plugin properties.
+     * Returns effect plugin properties.
      */
     virtual const EffectProperties properties() const = 0;
     /*!
