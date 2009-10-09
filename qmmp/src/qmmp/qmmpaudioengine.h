@@ -42,6 +42,7 @@ public:
     QmmpAudioEngine(QObject *parent);
     ~QmmpAudioEngine();
 
+    bool play();
     bool enqueue(InputSource *source);
     qint64 totalTime();
     void seek(qint64 time);
