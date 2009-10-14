@@ -42,4 +42,3 @@ void CoverWidget::paintEvent (QPaintEvent *p)
     if(!m_pixmap.isNull())
         paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
 }
-
