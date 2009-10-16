@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,7 +49,9 @@ void StatusIconFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Status Icon Plugin"),
                         tr("Qmmp Status Icon Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Writen by:") + "\n"+
+                        tr("Ilya Kotov <forkotov02@hotmail.ru>") +
+                        tr("Artur Guzik <a.guzik88@gmail.com>"));
 }
 
 QTranslator *StatusIconFactory::createTranslator(QObject *parent)
