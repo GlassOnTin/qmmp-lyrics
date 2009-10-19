@@ -48,3 +48,8 @@ QPixmap MetaDataModel::cover()
 {
     return QPixmap();
 }
+
+QString MetaDataModel::coverPath()
+{
+    return QString();
+}
