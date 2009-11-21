@@ -21,9 +21,9 @@
 #define SETTINGSDIALOG_H
 
 #include <QDialog>
-
-
 #include "ui_settingsdialog.h"
+
+class Action;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -42,8 +42,11 @@ public slots:
 
 private slots:
     void setFont();
+    void insertExpression(QAction *);
+    void on_resetButton_clicked();
 
 private:
+    void createMenu();
     Ui::SettingsDialog ui;
     QMap<uint, QPushButton*> m_buttons;
 
