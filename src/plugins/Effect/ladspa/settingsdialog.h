@@ -48,7 +48,6 @@ private:
     void updateRunningPlugins();
     Ui::SettingsDialog ui;
     QStandardItemModel *m_model;
-    bool m_created;
 };
 
 #endif
