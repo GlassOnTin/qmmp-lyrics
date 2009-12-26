@@ -30,9 +30,6 @@
 #include <qmmp/decoderfactory.h>
 #include <qmmp/metadatamodel.h>
 
-
-
-
 class DecoderMADFactory : public QObject,
                           DecoderFactory
 {
