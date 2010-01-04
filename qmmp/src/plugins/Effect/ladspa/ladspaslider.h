@@ -25,7 +25,6 @@
 
 class QDoubleSpinBox;
 class QSlider;
-class LADSPAHost;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -38,7 +37,6 @@ public:
                  double max,
                  double step,
                  LADSPA_Data *value,
-                 LADSPAHost *host,
                  QWidget *parent = 0);
 
 private slots:
@@ -52,8 +50,6 @@ private:
    double m_min;
    double m_max;
    double m_step;
-   LADSPAHost *m_host;
-
 };
 
 #endif // LADSPASLIDER_H
