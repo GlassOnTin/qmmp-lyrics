@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,7 @@
 #include <QtGlobal>
 #include <QMap>
 #include "qmmp.h"
-#include "replaygainsettings.h"
+#include "audiosettings.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,7 +35,7 @@ public:
     ReplayGain();
 
     void setSampleSize(int size);
-    void setReplayGainSettings(const ReplayGainSettings &settings);
+    void setAudioSettings(const AudioSettings &settings);
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
     void applyReplayGain(char *data, qint64 size);
 
@@ -43,7 +43,7 @@ private:
     void updateScale();
     int m_sampleSize;
     QMap<Qmmp::ReplayGainKey, double> m_info;
-    ReplayGainSettings m_settings;
+    AudioSettings m_settings;
     double m_scale;
 };
 
