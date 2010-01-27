@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,9 +38,6 @@ public:
     ~QmmpTrayIcon();
 
     void showNiceToolTip(bool value);
-    void setNiceToolTipDelay(int value);
-    void setNiceToolTipOpacity(qreal value);
-    void setSplitFileName(bool value);
 
 protected:
     bool event(QEvent *e);
@@ -48,11 +45,7 @@ protected:
 private:
     void wheelEvent(QWheelEvent *e);
     void showToolTip();
-
     bool m_showNiceToolTip;
-    bool m_splitFileName;
-    qint32 m_niceToolTipDelay;
-    qreal m_niceToolTipOpacity;
     QPointer<StatusIconPopupWidget> m_PopupWidget;
 
 };
