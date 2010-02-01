@@ -24,10 +24,9 @@
 #include <QMutex>
 #include <QByteArray>
 #include <QMap>
-
 #include <curl/curl.h>
 
-#define BUFFER_SIZE 128000
+class QTextCodec;
 
 /*! @internal
  *   @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,7 +34,7 @@
 struct Stream
 {
     char *buf;
-    int buf_fill;
+    long buf_fill;
     QString content_type;
     bool aborted;
     QMap <QString, QString> header;
@@ -78,6 +77,8 @@ private:
     QString m_title;
     bool m_ready;
     bool m_meta_sent;
+    long m_buffer_size;
+    QTextCodec *m_codec;
 
 protected:
     void run();
