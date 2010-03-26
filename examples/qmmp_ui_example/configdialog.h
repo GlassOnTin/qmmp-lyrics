@@ -22,18 +22,13 @@
 
 #include <QDialog>
 #include <QTreeWidgetItem>
-
 #include "ui_configdialog.h"
 
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class QFileInfo;
 
-class Skin;
-class SkinReader;
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class ConfigDialog : public QDialog
 {
     Q_OBJECT
@@ -43,19 +38,12 @@ public:
     ~ConfigDialog();
 
 private slots:
-    void on_contentsWidget_currentItemChanged (QListWidgetItem *current, QListWidgetItem *previous);
-    void changeSkin();
-    void setPlFont();
-    void setMainFont();
     void on_preferencesButton_clicked();
     void on_informationButton_clicked();
     void addTitleString(QAction *);
     void saveSettings();
     void updateDialogButton(int);
     void on_fdInformationButton_clicked();
-    void installSkin();
-    void loadSkins();
-    void on_popupCustomizeButton_clicked();
     void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
     void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
     void on_outputComboBox_activated (int index);
@@ -64,17 +52,10 @@ private slots:
 
 private:
     void readSettings();
-    void findSkins(const QString &path);
     void loadPluginsInfo();
-    void loadFonts();
     void createMenus();
-
-
-    QList <QFileInfo> m_skinList;
     Ui::ConfigDialog ui;
-    Skin *m_skin;
     QPixmap pixmap;
-    SkinReader *m_reader;
 };
 
 #endif
