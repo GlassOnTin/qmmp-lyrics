@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -59,8 +59,7 @@ public:
     QMutex *mutex();
     QString contentType();
     void abort();
-    int bytesAvailable();
-    const QString& title() const;
+    qint64 bytesAvailable();
     void checkBuffer();
     bool isReady();
 
