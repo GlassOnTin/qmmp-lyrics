@@ -3,12 +3,14 @@ SOURCES += main.cpp \
     listwidget.cpp \
     configdialog.cpp \
     pluginitem.cpp \
-    visualmenu.cpp
+    visualmenu.cpp \
+    renamedialog.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     configdialog.h \
     pluginitem.h \
-    visualmenu.h
+    visualmenu.h \
+    renamedialog.h
 TEMPLATE = app
 CONFIG += warn_on \
     thread \
@@ -18,6 +20,8 @@ LIBS += -lqmmp \
     -lqmmpui \
     -L/home/user/qmmp-0.4/lib
 FORMS += mainwindow.ui \
-    configdialog.ui
+    configdialog.ui \
+    dialog.ui
 RESOURCES += stuff.qrc
 INCLUDEPATH += /home/user/qmmp-0.4/include/
+OTHER_FILES += 

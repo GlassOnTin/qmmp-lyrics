@@ -21,6 +21,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 #include <qmmp/qmmp.h>
 #include <ui_mainwindow.h>
 
@@ -38,36 +39,37 @@ class MainWindow : public QMainWindow
 {
 Q_OBJECT
 public:
-    MainWindow(QWidget *parent = 0);
-
-    ~MainWindow();
+	MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
 private slots:
-    void addDir();
-    void addFiles();
-    void updatePosition(qint64 pos);
-    void seek();
-    void showState(Qmmp::State);
-    void showBitrate(int);
-    void updateTabs();
-    void addPlaylist();
-    void removePlaylist();
-    void addTab(int);
-    void removeTab(int);
-    void about();
-    void toggleVisibility();
-    void showSettings();
+	void addDir();
+	void addFiles();
+	void updatePosition(qint64 pos);
+	void seek();
+	void showState(Qmmp::State);
+	void showBitrate(int);
+	void updateTabs();
+	void addPlaylist();
+	void removePlaylist();
+	void removePlaylistWithIndex(int);
+	void addTab(int);
+	void removeTab(int);
+	void renameTab();
+	void about();
+	void toggleVisibility();
+	void showSettings();
 
 private:
-    QString m_lastDir;
-    PlayListManager *m_pl_manager;
-    Ui::MainWindow ui;
-    MediaPlayer *m_player;
-    QSlider *m_slider;
-    QLabel *m_label;
-    SoundCore *m_core;
-    GeneralHandler *m_generalHandler;
-    VisualMenu *m_visMenu;
+	QString m_lastDir;
+	PlayListManager *m_pl_manager;
+	Ui::MainWindow ui;
+	MediaPlayer *m_player;
+	QSlider *m_slider;
+	QLabel *m_label;
+	SoundCore *m_core;
+	GeneralHandler *m_generalHandler;
+	VisualMenu *m_visMenu;
 
 };
 

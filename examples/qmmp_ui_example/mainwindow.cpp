@@ -37,6 +37,7 @@
 #include "visualmenu.h"
 #include "listwidget.h"
 #include "mainwindow.h"
+#include "renamedialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent)
@@ -62,15 +63,15 @@ MainWindow::MainWindow(QWidget *parent)
     //file menu
     connect(ui.actionAddFile, SIGNAL(triggered()),SLOT(addFiles()));
     connect(ui.actionAddDirectory, SIGNAL(triggered()),SLOT(addDir()));
+    connect(ui.actionNewPlayList, SIGNAL(triggered()),SLOT(addPlaylist()));
+    connect(ui.actionClosePlayList,SIGNAL(triggered()),SLOT(removePlaylist()));
+    connect(ui.actionRenamePlayList,SIGNAL(triggered()),SLOT(renameTab()));
     connect(ui.actionExit, SIGNAL(triggered()),qApp, SLOT(closeAllWindows()));
     //edit menu
     connect(ui.actionSelectAll, SIGNAL(triggered()), m_pl_manager, SLOT(selectAll()));
     connect(ui.actionRemoveSelected, SIGNAL(triggered()), m_pl_manager, SLOT(removeSelected()));
     connect(ui.actionRemoveUnselected, SIGNAL(triggered()), m_pl_manager, SLOT(removeUnselected()));
     connect(ui.actionClearPlayList, SIGNAL(triggered()),m_pl_manager, SLOT(clear()));
-    //playlist menu
-    connect(ui.actionNewPlayList, SIGNAL(triggered()),SLOT(addPlaylist()));
-    connect(ui.actionClosePlayList,SIGNAL(triggered()),SLOT(removePlaylist()));
     //tools menu
     connect(ui.actionSettings, SIGNAL(triggered()),SLOT(showSettings()));
     ui.actionVisualization->setMenu(m_visMenu);
@@ -96,8 +97,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_slider = new QSlider (Qt::Horizontal, this);
     m_label = new QLabel(this);
     m_label->setText("--:--/--:--");
-    ui.toolBar->addWidget(m_slider);
-    ui.toolBar->addWidget(m_label);
+    ui.progressToolBar->addWidget(m_slider);
+    ui.progressToolBar->addWidget(m_label);
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
 
@@ -110,6 +111,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeTab(int)));
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
+    ui.tabWidget->setTabsClosable(1);
+    connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
 }
 
 MainWindow::~MainWindow()
@@ -194,6 +197,11 @@ void MainWindow::removePlaylist()
      m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
 }
 
+void MainWindow::removePlaylistWithIndex(int index)
+{
+    m_pl_manager->removePlayList(m_pl_manager->playListAt(index));
+}
+
 void MainWindow::addTab(int index)
 {
     ListWidget *list = new ListWidget(m_pl_manager->playListAt(index), this);
@@ -206,6 +214,20 @@ void MainWindow::addTab(int index)
      ui.tabWidget->widget(index)->deleteLater();
      ui.tabWidget->removeTab(index);
      updateTabs();
+ }
+
+ void MainWindow::renameTab()
+ {
+	renameDialog *dialog = new renameDialog(this);
+	if(dialog->exec()==QDialog::Accepted)
+	{
+		if(!dialog->ui.nameLineEdit->text().isEmpty())
+		{
+			m_pl_manager->playListAt(ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
+			updateTabs();
+		}
+	}
+	dialog->deleteLater();
  }
 
  void MainWindow::about()
