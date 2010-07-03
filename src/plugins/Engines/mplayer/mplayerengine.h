@@ -57,10 +57,6 @@ public:
     void stop();
     void pause();
 
-    // Equalizer
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
-
 private slots:
     void readStdOut();
     void startMplayerProcess();
