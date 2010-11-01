@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QDir>
+#include <QQueue>
 #include <QThread>
 
 class PlayListItem;
@@ -49,17 +50,22 @@ public:
      */
     ~FileLoader();
     /*!
-     * Call this method when you want to notify the thread about finishing
+     * Sets files to load
      */
     void finish();
     /*!
-     * Sets filelist to load( directory to load will be cleaned )
+     * Sets file to load
      */
-    void setFilesToLoad(const QStringList&);
+    void loadFile(const QString &path);
     /*!
-     * Sets directory to load( filelist to load will be cleaned )
+     * Sets files to load
      */
-    void setDirectoryToLoad(const QString&);
+    void loadFiles(const QStringList &paths);
+    /*!
+     * Sets directory to load
+     */
+    void loadDirectory(const QString &path);
+
 signals:
     /*!
      * Emitted when new playlist item is available.
@@ -69,13 +75,13 @@ signals:
 
 protected:
     virtual void run();
-    void addFiles(const QStringList &files);
-    void addDirectory(const QString& s);
+    void addFile(const QString &path);
+    void addDirectory(const QString &s);
 
 private:
     QStringList m_filters;
-    QStringList m_files_to_load;
-    QString m_directory;
+    QQueue <QString> m_files;
+    QQueue <QString> m_directories;
     bool m_finished;
 };
 

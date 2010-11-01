@@ -54,6 +54,8 @@ signals:
     void TrackListChange(int in0);
 
 private slots:
+    void disconnectPl();
+    void checkNewItem();
     void updateTrackList();
     void switchPlayList(PlayListModel *cur, PlayListModel *prev);
 
@@ -61,6 +63,7 @@ private:
     PlayListModel *m_model;
     PlayListManager *m_pl_manager;
     MediaPlayer *m_player;
+    int m_prev_count;
 
 };
 
