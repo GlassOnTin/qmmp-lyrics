@@ -35,6 +35,7 @@ public:
 
     ShortcutItem(QTreeWidgetItem *parent, int type);
     ~ShortcutItem();
+    QAction *action();
 
 private:
     QAction *m_action;
