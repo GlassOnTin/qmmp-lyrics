@@ -20,8 +20,8 @@
  ***************************************************************************/
 
 
-#ifndef   OUTPUTOSS_H
-#define   OUTPUTOSS_H
+#ifndef OUTPUTOSS_H
+#define OUTPUTOSS_H
 
 class OutputOSS;
 
@@ -38,8 +38,6 @@ public:
     bool initialize();
     void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
-    int audio_fd();
-    static OutputOSS* instance();
 
 private:
     //output api
@@ -50,18 +48,11 @@ private:
 private:
     void post();
     void sync();
-    void uninitialize();
-
-    QString m_audio_device, m_mixer_device;
-
-    bool m_inited;
-    quint32 m_frequency;
-    int m_channels;
+    QString m_audio_device;
 
     bool do_select;
     int m_audio_fd;
     long bl, br;
-    static OutputOSS *m_instance;
 };
 
 class VolumeControlOSS : public VolumeControl
@@ -72,9 +63,6 @@ public:
     ~VolumeControlOSS();
 
     void setVolume(int left, int right);
-    static VolumeControlOSS* instance();
-
-protected:
     void volume(int *left, int *right);
 
 private:
@@ -84,8 +72,6 @@ private:
     int m_mixer_fd;
     QString m_mixer_device;
     bool m_master;
-    int m_left2, m_right2;
-    static VolumeControlOSS *m_instance;
 };
 
 
