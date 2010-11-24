@@ -30,7 +30,7 @@
 const InputSourceProperties MMSInputFactory::properties() const
 {
     InputSourceProperties p;
-    p.protocols = "mms mmsh mmst mmsu";
+    p.protocols << "mms" << "mmsh" << "mmst" << "mmsu";
     p.name = tr("MMS Plugin");
     p.shortName = "mms";
     p.hasAbout = true;
