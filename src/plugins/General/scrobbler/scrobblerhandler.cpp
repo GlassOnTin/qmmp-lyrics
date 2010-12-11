@@ -18,11 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#define SCROBBLER_LASTFM_URL "post.audioscrobbler.com"
 #define SCROBBLER_LIBREFM_URL "turtle.libre.fm"
+#define SCROBBLER_LASTFM_URL "ws.audioscrobbler.com/2.0"
 
 #include <QSettings>
 #include "scrobbler.h"
+#include "scrobbler2.h"
 #include "scrobblerhandler.h"
 
 ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
@@ -31,9 +32,7 @@ ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
     settings.beginGroup("Scrobbler");
     if(settings.value("use_lastfm", false).toBool())
     {
-        new Scrobbler(SCROBBLER_LASTFM_URL, settings.value("lastfm_login").toString(),
-                   settings.value("lastfm_password").toString(), "lastfm", this);
-
+        new Scrobbler2(SCROBBLER_LASTFM_URL, "lastfm", this);
     }
     if(settings.value("use_librefm", false).toBool())
     {
