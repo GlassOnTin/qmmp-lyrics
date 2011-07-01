@@ -66,7 +66,7 @@ private:
     void startMainWindow();
 
 private:
-    MainWindow* mw;
+    //MainWindow* mw;
     QString argString;
     BuiltinCommandLineOption* m_option_manager;
     QLocalServer *m_server;
