@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,11 +19,8 @@
  ***************************************************************************/
 
 #include <QAction>
-
 #include <qmmp/visual.h>
 #include <qmmp/visualfactory.h>
-
-#include "pluginitem.h"
 #include "visualmenu.h"
 
 VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)
