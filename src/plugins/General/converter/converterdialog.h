@@ -44,6 +44,10 @@ public slots:
 private slots:
     void on_dirButton_clicked();
     void addTitleString(QAction *a);
+    void createPreset();
+    void editPreset();
+    void copyPreset();
+    void deletePreset();
 
 private:
     void createMenus();
