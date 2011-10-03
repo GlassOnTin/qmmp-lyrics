@@ -28,6 +28,9 @@
 #include <qmmp/decoder.h>
 #include <qmmp/inputsource.h>
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Converter : public QThread
 {
     Q_OBJECT
