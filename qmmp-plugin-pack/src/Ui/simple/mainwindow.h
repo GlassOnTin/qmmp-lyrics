@@ -34,6 +34,7 @@ class SoundCore;
 class PlayListManager;
 class GeneralHandler;
 class VisualMenu;
+class PositionSlider;
 
 class MainWindow : public QMainWindow
 {
@@ -66,8 +67,8 @@ private:
 	PlayListManager *m_pl_manager;
 	Ui::MainWindow ui;
 	MediaPlayer *m_player;
-	QSlider *m_slider;
-	QLabel *m_label;
+	PositionSlider *m_slider;
+	QLabel *m_timeLabel;
 	SoundCore *m_core;
 	QLabel *m_statusLabel;
 	VisualMenu *m_visMenu;
