@@ -35,6 +35,7 @@ class PlayListManager;
 class GeneralHandler;
 class VisualMenu;
 class PositionSlider;
+class VolumeSlider;
 
 class MainWindow : public QMainWindow
 {
@@ -62,6 +63,8 @@ private slots:
 	void about();
 	void toggleVisibility();
 	void showSettings();
+	void setVolume(int volume);
+	void updateVolume();
 
 private:
 	void closeEvent(QCloseEvent *);
@@ -77,6 +80,7 @@ private:
 	VisualMenu *m_visMenu;
 	UiHelper *m_uiHelper;
 	QMenu *m_pl_menu;
+	VolumeSlider *m_volumeSlider;
 
 };
 
