@@ -37,12 +37,15 @@ public:
 private slots:
     void on_plFontButton_clicked();
     void on_popupTemplateButton_clicked();
+    void on_changeShortcutButton_clicked();
 
 private:
     void showEvent(QShowEvent *);
     void loadFonts();
     void readSettings();
-    Ui::SimpleSettings ui;
+    void loadShortcuts();
+
+    Ui::SimpleSettings m_ui;
 };
 
 #endif // SIMPLESETTINGS_H
