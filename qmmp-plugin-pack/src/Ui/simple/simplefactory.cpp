@@ -20,6 +20,7 @@
 
 #include <QtPlugin>
 #include <QMessageBox>
+#include <qmmp/qmmpsettings.h>
 #include "mainwindow.h"
 #include "simplefactory.h"
 
@@ -34,6 +35,7 @@ const UiProperties SimpleFactory::properties() const
 
 QObject *SimpleFactory::SimpleFactory::create()
 {
+    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
     return new MainWindow();
 }
 
