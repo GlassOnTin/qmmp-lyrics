@@ -22,12 +22,13 @@
 #include <QMessageBox>
 #include <qmmp/qmmpsettings.h>
 #include "mainwindow.h"
+#include "aboutsimpleuidialog.h"
 #include "simplefactory.h"
 
 const UiProperties SimpleFactory::properties() const
 {
     UiProperties props;
-    props.hasAbout = false;
+    props.hasAbout = true;
     props.name = tr("Simple User Interface");
     props.shortName = "simple";
     return props;
@@ -39,8 +40,11 @@ QObject *SimpleFactory::SimpleFactory::create()
     return new MainWindow();
 }
 
-void SimpleFactory::showAbout(QWidget *)
-{}
+void SimpleFactory::showAbout(QWidget *parent)
+{
+    AboutSimpleUiDialog about(parent);
+    about.exec();
+}
 
 QTranslator *SimpleFactory::createTranslator(QObject *parent)
 {
