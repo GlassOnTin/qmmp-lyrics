@@ -22,12 +22,12 @@
 #define OUTPUTOSS4_H
 
 #include <qmmp/output.h>
-#include <qmmp/volumecontrol.h>
+#include <qmmp/volume.h>
 
 #define DEFAULT_DEV "/dev/dsp"
 #define DEFAULT_MIXER "/dev/mixer"
 
-class VolumeControlOSS4;
+class VolumeOSS4;
 
 /**
     @author Ilya Kotov <forkotov@hotmail.ru>
@@ -36,7 +36,7 @@ class OutputOSS4 : public Output
 {
 Q_OBJECT
 public:
-    OutputOSS4(QObject * parent);
+    OutputOSS4();
     virtual ~OutputOSS4();
 
     bool initialize(quint32, int, Qmmp::AudioFormat format);
@@ -44,7 +44,7 @@ public:
     qint64 latency();
 
     static OutputOSS4 *instance();
-    static VolumeControlOSS4 *m_vc;
+    static VolumeOSS4 *m_vc;
 
 private:
     //output api
@@ -62,15 +62,15 @@ private:
 
 };
 
-class VolumeControlOSS4 : public VolumeControl
+class VolumeOSS4 : public Volume
 {
     Q_OBJECT
 public:
-    VolumeControlOSS4(QObject *parent);
-    ~VolumeControlOSS4();
+    VolumeOSS4(QObject *parent);
+    ~VolumeOSS4();
 
-    void setVolume(int left, int right);
-    void volume(int *left, int *right);
+    void setVolume(int channel, int value);
+    int volume(int channel);
     void restore();
 
 private:
