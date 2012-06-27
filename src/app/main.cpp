@@ -27,11 +27,12 @@
 #include <stdlib.h>
 #include <qmmp/qmmp.h>
 #include "lxdesupport.h"
+#include "qmmpapplication.h"
 #include "qmmpstarter.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication a (argc, argv );
+    QmmpApplication a (argc, argv );
     a.setApplicationName("qmmp");
     a.setWindowIcon(QIcon(":/32x32/qmmp.png"));
 
