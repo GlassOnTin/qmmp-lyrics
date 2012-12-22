@@ -20,6 +20,8 @@
 #ifndef PLAYLISTPARSER_H
 #define PLAYLISTPARSER_H
 
+#include <QStringList>
+#include <QUrl>
 #include "playlistformat.h"
 
 /*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
@@ -37,10 +39,20 @@ public:
      */
     static QStringList nameFilters();
     /*!
+     * Returns PlayListFormat pointer which supports mime type \b mime
+     * or \b 0 if mime type \b mime is unsupported
+     */
+    static PlayListFormat *findByMime(const QString &mime);
+    /*!
      * Finds playlist format by file path \b filePath
      * Returns \b 0 if file \b filePath is unsupported.
      */
     static PlayListFormat *findByPath(const QString &filePath);
+    /*!
+     * Finds playlist format by url path \b url
+     * Returns \b 0 if file \b filePath is unsupported.
+     */
+    static PlayListFormat *findByUrl(const QUrl &url);
 
 private:
     PlayListParser(){}
