@@ -19,10 +19,19 @@
  ***************************************************************************/
 
 #include <QTabBar>
+#include "qsuitabbar.h"
 #include "qsuitabwidget.h"
 
 QSUiTabWidget::QSUiTabWidget(QWidget *parent) : QTabWidget(parent)
 {
+    setTabBar(new QSUiTabBar(this));
     setMovable(true);
     connect(tabBar(), SIGNAL(tabMoved(int,int)), SIGNAL(tabMoved(int,int)));
+    connect(tabBar(), SIGNAL(tabCloseRequested(int)), SLOT(onTabCloseRequest(int)));
+}
+
+void QSUiTabWidget::onTabCloseRequest(int i)
+{
+    if(!tabsClosable())
+        emit tabCloseRequested(i);
 }
