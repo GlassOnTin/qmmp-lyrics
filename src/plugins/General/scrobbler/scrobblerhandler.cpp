@@ -18,12 +18,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#define SCROBBLER_LIBREFM_URL "turtle.libre.fm"
-#define SCROBBLER_LASTFM_URL "ws.audioscrobbler.com/2.0"
-
 #include <QSettings>
-#include "scrobbler.h"
-#include "scrobbler2.h"
+#include "lastfmscrobbler.h"
+#include "librefmscrobbler.h"
 #include "scrobblerhandler.h"
 
 ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
@@ -32,12 +29,12 @@ ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
     settings.beginGroup("Scrobbler");
     if(settings.value("use_lastfm", false).toBool())
     {
-        new Scrobbler2(SCROBBLER_LASTFM_URL, "lastfm", this);
+        new LastfmScrobbler(this);
     }
     if(settings.value("use_librefm", false).toBool())
     {
-        new Scrobbler(SCROBBLER_LIBREFM_URL, settings.value("librefm_login").toString(),
-                   settings.value("librefm_password").toString(), "librefm", this);
+        new LibrefmScrobbler(settings.value("librefm_login").toString(),
+                             settings.value("librefm_password").toString(), this);
 
     }
     settings.endGroup();
