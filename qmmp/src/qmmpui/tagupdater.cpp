@@ -20,16 +20,16 @@
 
 #include "tagupdater_p.h"
 
-TagUpdater::TagUpdater(QObject* o, PlayListItem* item) : m_observable(o), m_item(item)
+TagUpdater::TagUpdater(QObject* o, PlayListTrack* track) : m_observable(o), m_item(track)
 {
-    m_item->setFlag(PlayListItem::EDITING);
+    m_item->setFlag(PlayListTrack::EDITING);
     connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
     connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
 }
 
 void TagUpdater::updateTag()
 {
-    if (m_item->flag() == PlayListItem::SCHEDULED_FOR_DELETION)
+    if (m_item->flag() == PlayListTrack::SCHEDULED_FOR_DELETION)
     {
         delete m_item;
         m_item = NULL;
@@ -37,6 +37,6 @@ void TagUpdater::updateTag()
     else
     {
         m_item->updateTags();
-        m_item->setFlag(PlayListItem::FREE);
+        m_item->setFlag(PlayListTrack::FREE);
     }
 }
