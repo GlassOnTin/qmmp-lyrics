@@ -26,44 +26,32 @@
 #include "playlisttrack.h"
 #include "playlistgroup.h"
 
-
 class PlayListContainer
 {
 public:
-    PlayListContainer();
+    PlayListContainer(){}
+    virtual ~PlayListContainer(){}
 
-    void addGroup(PlayListGroup *group);
-    void addTrack(PlayListTrack *item);
-
-    QList<PlayListGroup *> groups();
-    QList<PlayListItem *> items() const;
-    int count() const;
-    int trackCount() const;
-    QList<PlayListItem *> mid(int pos, int count) const;
-    bool isEmpty() const;
-
-    bool isSelected(int index) const;
-    void setSelected(int index, bool selected);
-    void clearSelection();
-    int indexOf(PlayListItem *item) const;
-    PlayListItem *item(int index) const;
-    PlayListTrack *track(int index) const;
-    bool contains(PlayListItem *item) const;
-    int numberOfTrack(int index) const;
-
-    void removeTrack(int index);
-    void removeTrack(PlayListTrack *track);
-    void removeTracks(QList<PlayListTrack *> tracks);
-
-    bool move(QList<int> indexes, int from, int to);
-
-    void clear();
-
-private:
-    void updateIndex();
-    QList<PlayListGroup *> m_groups;
-    QList<PlayListItem *> m_items;
-
+    virtual void addTrack(PlayListTrack *item) = 0;
+    virtual QList<PlayListGroup *> groups() = 0;
+    virtual QList<PlayListItem *> items() const = 0;
+    virtual int count() const = 0;
+    virtual int trackCount() const = 0;
+    virtual QList<PlayListItem *> mid(int pos, int count) const = 0;
+    virtual bool isEmpty() const = 0;
+    virtual bool isSelected(int index) const = 0;
+    virtual void setSelected(int index, bool selected) = 0;
+    virtual void clearSelection() = 0;
+    virtual int indexOf(PlayListItem *item) const = 0;
+    virtual PlayListItem *item(int index) const = 0;
+    virtual PlayListTrack *track(int index) const = 0;
+    virtual bool contains(PlayListItem *item) const = 0;
+    virtual int numberOfTrack(int index) const = 0;
+    virtual void removeTrack(int index) = 0;
+    virtual void removeTrack(PlayListTrack *track) = 0;
+    virtual void removeTracks(QList<PlayListTrack *> tracks) = 0;
+    virtual bool move(QList<int> indexes, int from, int to) = 0;
+    virtual void clear() = 0;
 };
 
 #endif // PLAYLISTCONTAINER_P_H
