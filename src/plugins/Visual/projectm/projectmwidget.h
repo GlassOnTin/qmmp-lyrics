@@ -22,12 +22,11 @@
 
 #include <QGLWidget>
 
-
 class QMenu;
 class QTimer;
+class QListWidget;
+class ProjectMWrapper;
 class projectM;
-
-
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -36,11 +35,14 @@ class ProjectMWidget : public QGLWidget
 {
     Q_OBJECT
 public:
-    ProjectMWidget(QWidget *parent = 0);
+    ProjectMWidget(QListWidget *listWidget, QWidget *parent = 0);
 
     ~ProjectMWidget();
 
     projectM *projectMInstance();
+
+signals:
+    void showMenuToggled(bool);
 
 protected:
     virtual void initializeGL();
@@ -55,15 +57,17 @@ private slots:
     void nextPreset();
     void previousPreset();
     void randomPreset();
-    void lockPreset();
+    void lockPreset(bool lock);
     void fullScreen();
     void updateTitle();
+    void setCurrentRow(int row);
 
 private:
     void createActions();
-    projectM *m_projectM;
+    ProjectMWrapper *m_projectM;
     QMenu *m_menu;
     QTimer *m_timer;
+    QListWidget *m_listWidget;
 };
 
 #endif
