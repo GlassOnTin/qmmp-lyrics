@@ -19,31 +19,31 @@ is freely available on the Internet.
 
 List of the third-party libraries.
 
-  Name                Web page
+  Name                Version    Web page
 
-  GNU C Library       http://www.gnu.org/s/libc
-  MinGW-w64           http://mingw-w64.sourceforge.net/
-  Qt                  http://qt-project.org/
-  unzip               http://www.info-zip.org/pub/infozip/UnZip.html
-  libmad              http://www.underbit.com/products/mad/
-  libvorbis           http://www.vorbis.com/
-  libogg              http://www.vorbis.com/
-  taglib              http://taglib.github.io/
-  curl                http://curl.haxx.se/
-  flac                http://flac.sourceforge.net/
-  libmpcdec           http://www.musepack.net/
-  libsamplerate       http://www.mega-nerd.com/SRC/
-  libmodplug          http://modplug-xmms.sourceforge.net/
-  libsndfile          http://www.mega-nerd.com/libsndfile/
-  wavpack             http://www.wavpack.com/
-  ffmpeg              http://ffmpeg.org/
-  libbs2b             http://bs2b.sourceforge.net/
-  game-music-emu      http://code.google.com/p/game-music-emu/
-  libopus             http://www.opus-codec.org/
-  libopusfile         http://www.opus-codec.org/
-  libcdio             http://www.gnu.org/software/libcdio/
-  libcddb             http://libcddb.sourceforge.net/
-
+  MinGW-w64           4.8.2	 http://mingw-w64.sourceforge.net/
+  Qt                  4.8.6	 http://qt-project.org/
+  unzip               5.51	 http://www.info-zip.org/pub/infozip/UnZip.html
+  taglib              1.9.1	 http://taglib.github.io/
+  libmad              0.15.1b	 http://www.underbit.com/products/mad/
+  libogg              1.3.1	 http://www.vorbis.com/  
+  libvorbis           1.3.4	 http://www.vorbis.com/
+  flac                1.3.0	 http://flac.sourceforge.net/
+  wavpack             4.70.0	 http://www.wavpack.com/  
+  libsndfile          1.0.25	 http://www.mega-nerd.com/libsndfile/
+  opus                1.1	 http://www.opus-codec.org/
+  opusfile            0.5	 http://www.opus-codec.org/
+  libbs2b             3.1.0	 http://bs2b.sourceforge.net/
+  curl                7.34.0	 http://curl.haxx.se/
+  libcdio             0.83 	 http://www.gnu.org/software/libcdio/  
+  mingw-libgnurx      2.5.1      http://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/
+  libcddb             1.3.2	 http://libcddb.sourceforge.net/
+  ffmpeg              2.1.4	 http://ffmpeg.org/
+  libmodplug          0.8.8.4 	 http://modplug-xmms.sourceforge.net/
+  game-music-emu      0.6.0	 http://code.google.com/p/game-music-emu/
+  musepack            r475	 http://www.musepack.net/
+  
+ 
 List of the third-party artwork.
 
   Name                Web page
