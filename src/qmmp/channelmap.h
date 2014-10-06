@@ -24,16 +24,17 @@
 #include <QList>
 #include "qmmp.h"
 
-class ChannelMap : public QList<Qmmp::AudioChannel>
+class ChannelMap : public QList<Qmmp::ChannelPosition>
 {
 public:
     ChannelMap();
 
     int mask() const;
     const ChannelMap remaped() const;
+    const QString toString() const;
 
 private:
-    static Qmmp::AudioChannel m_internal_map[8];
+    static Qmmp::ChannelPosition m_internal_map[9];
 };
 
 #endif // CHANNELMAP_H
