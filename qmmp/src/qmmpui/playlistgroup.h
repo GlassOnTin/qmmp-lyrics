@@ -43,9 +43,8 @@ public:
     virtual ~PlayListGroup();
     /*!
      * Returns formatted title of the  group.
-     * @param column Number of column (unused).
      */
-    const QString formattedTitle(int column = 0);
+    const QString formattedTitle();
     /*!
      * Returns \b true if the group contains track \b track.
      * Otherwise returns \b false.
