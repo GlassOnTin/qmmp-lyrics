@@ -42,7 +42,6 @@ public:
 private slots:
     void on_plFontButton_clicked();
     void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
     void addWindowTitleString(QAction *a);
 
 private:
@@ -50,7 +49,6 @@ private:
     void loadFonts();
     void createActions();
     void readSettings();
-    void loadShortcuts();
 
     Ui::QSUISettings m_ui;
 };
