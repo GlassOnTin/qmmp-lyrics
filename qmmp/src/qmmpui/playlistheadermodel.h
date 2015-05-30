@@ -25,6 +25,8 @@
 #include <QWidget>
 #include "metadataformatter.h"
 
+class MetaDataHelper;
+
 /**
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -38,40 +40,31 @@ public:
 
     void insert(int index, const QString &name, const QString &pattern);
     void remove(int index);
-    void resize(int index, int size);
-    void setAutoResize(int index);
-    void setMinimalSize(int index, int size);
     void move(int from, int to);
     void execEdit(int index, QWidget *parent = 0);
     void execInsert(int index, QWidget *parent = 0);
 
     int count();
-    const MetaDataFormatter* titleFormatter(int index) const;
-    int size(int index) const;
+
     const QString name(int index) const;
     const QString pattern(int index) const;
-    int autoResizeColumn() const;
 
 signals:
     void columnAdded(int index);
     void columnRemoved(int index);
     void columnChanged(int index);
-    void columnResized(int index);
     void columnMoved(int from, int to);
     void headerChanged();
 
 private:
     void sync();
-    struct Column
+    struct ColumnHeader
     {
         QString name;
         QString pattern;
-        int size;
-        int minSize;
-        bool autoResize;
-        MetaDataFormatter *titleFormatter;
     };
-    QList<Column> m_columns;
+    QList<ColumnHeader> m_columns;
+    MetaDataHelper *m_helper;
 };
 
 #endif // COLUMNMANAGER_H
