@@ -30,6 +30,7 @@ public:
     DecoderXmp(const QString &path);
     virtual ~DecoderXmp();
 
+    static DecoderXmp *instance();
     void readSettings();
     // Standard Decoder API
     bool initialize();
@@ -38,6 +39,7 @@ public:
     qint64 read(char *audio, qint64 maxSize);
     void seek(qint64 time);
 
+
 private:
     //helper function
     void deinit();
@@ -45,6 +47,9 @@ private:
     xmp_context m_ctx;
     qint64 m_totalTime;
     QString m_path;
+    quint32 m_srate;
+
+    static DecoderXmp *m_instance;
 };
 
 #endif // DECODER_XMP_H
