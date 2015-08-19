@@ -66,10 +66,7 @@ public:
      * Returns true if the object supports change notification via
      * emitting changed() signal so polling the volume is not needed.
      */
-    virtual bool hasNotifySignal() const
-    {
-         return false;
-    }
+    virtual bool hasNotifySignal() const;
 
 signals:
     void changed();
