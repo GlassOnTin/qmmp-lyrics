@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
+
 #ifndef DECODERARCHIVE_H
 #define DECODERARCHIVE_H
 
@@ -40,7 +41,6 @@ public:
 
 private:
     QString m_url;
-    struct archive *m_archive;
     Decoder *m_decoder;
     QIODevice *m_input;
 
