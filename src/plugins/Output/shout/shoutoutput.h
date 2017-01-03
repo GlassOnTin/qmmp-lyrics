@@ -22,6 +22,7 @@
 #define SHOUTOUTPUT_H
 
 #include <vorbis/vorbisenc.h>
+#include <soxr.h>
 #include <qmmp/output.h>
 #include "shoutclient.h"
 
@@ -48,6 +49,10 @@ private:
     vorbis_comment   m_vc; //struct that stores all the user comments
     vorbis_dsp_state m_vd; //central working state for the packet->PCM decoder
     vorbis_block     m_vb; //local working space for packet->PCM decode
+    soxr_t m_soxr;
+    float *m_soxr_buf;
+    size_t m_soxr_buf_frames;
+    double m_ratio;
 };
 
 #endif // SHOUTOUTPUT_H
