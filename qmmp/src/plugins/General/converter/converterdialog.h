@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011-2016 by Ilya Kotov                                 *
+ *   Copyright (C) 2011-2017 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,6 @@
 #include <QCloseEvent>
 #include "ui_converterdialog.h"
 
-class QAction;
 class PlayListTrack;
 class ConverterPreset;
 class Converter;
@@ -50,7 +49,7 @@ private slots:
     void on_stopButton_clicked();
     void onStateChanged(int row, QString message);
     void onConvertFinished(Converter *c);
-    void addTitleString(QAction *a);
+    void addTitleString(const QString &str);
     void createPreset();
     void editPreset();
     void copyPreset();
