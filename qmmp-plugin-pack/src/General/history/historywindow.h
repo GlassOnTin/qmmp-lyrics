@@ -40,6 +40,10 @@ public:
 
 private slots:
     void on_executeButton_clicked();
+    void on_lastWeakButton_clicked();
+    void on_lastMonthButton_clicked();
+    void on_fromButton_clicked();
+    void on_toButton_clicked();
 
 private:
     void loadHistory();
