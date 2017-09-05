@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2016 by Ilya Kotov                                      *
+ *   Copyright (C) 2016-2017 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #include <QMessageBox>
 #include <QTranslator>
 #include <QtPlugin>
+#include "settingsdialog.h"
 #include "outputwasapi.h"
 #include "outputwasapifactory.h"
 
@@ -29,7 +30,7 @@ const OutputProperties OutputWASAPIFactory::properties() const
     OutputProperties properties;
     properties.name = tr("WASAPI Plugin");
     properties.hasAbout = true;
-    properties.hasSettings = false;
+    properties.hasSettings = true;
     properties.shortName = "wasapi";
     return properties;
 }
@@ -46,7 +47,8 @@ Volume *OutputWASAPIFactory::createVolume()
 
 void OutputWASAPIFactory::showSettings(QWidget* parent)
 {
-   Q_UNUSED(parent);
+    SettingsDialog *s = new SettingsDialog(parent);
+    s->show();
 }
 
 void OutputWASAPIFactory::showAbout(QWidget *parent)
