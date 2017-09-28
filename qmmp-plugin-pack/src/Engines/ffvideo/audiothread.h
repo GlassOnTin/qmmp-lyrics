@@ -36,6 +36,7 @@ extern "C"{
 
 class Output;
 class PacketBuffer;
+class FFVideoDecoder;
 
 class AudioThread : public QThread
 {
@@ -43,7 +44,7 @@ class AudioThread : public QThread
 public:
     explicit AudioThread(PacketBuffer *buf, QObject *parent = 0);
 
-    bool initialize(AVCodecContext *ctx);
+    bool initialize(FFVideoDecoder *decoder);
 
 private:
     void run();
