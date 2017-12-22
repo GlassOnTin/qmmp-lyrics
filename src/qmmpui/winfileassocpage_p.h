@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2014 by Ilya Kotov                                      *
+ *   Copyright (C) 2014-2018 by Ilya Kotov                                 *
  *   forkotov02@ya.ru                                                      *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 
 #include <QWidget>
 #include <QStringList>
+#include "qmmpui_export.h"
 
 namespace Ui {
 class WinFileAssocPage;
@@ -32,9 +33,9 @@ class QListWidgetItem;
 
 /*! @internal
  */
-class WinFileAssocPage : public QWidget
+class QMMPUI_EXPORT WinFileAssocPage : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
     WinFileAssocPage(QWidget *parent = 0);
     virtual ~WinFileAssocPage();
@@ -43,7 +44,7 @@ public:
 private slots:
     void on_selectAll_clicked();
     void on_selectNone_clicked();
-	
+
 private:
     void loadAssociations();
     void saveAssociations();
