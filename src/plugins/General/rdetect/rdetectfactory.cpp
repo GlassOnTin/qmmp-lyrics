@@ -20,6 +20,7 @@
 
 #include <QMessageBox>
 #include <qmmp/qmmp.h>
+#include "settingsdialog.h"
 #include "removablehelper.h"
 #include "rdetectfactory.h"
 
@@ -29,7 +30,7 @@ GeneralProperties RDetectFactory::properties() const
     properties.name = tr("Volume Detection Plugin");
     properties.shortName = "rdetect";
     properties.hasAbout = true;
-    properties.hasSettings = false;
+    properties.hasSettings = true;
     properties.visibilityControl = false;
     return properties;
 }
@@ -41,8 +42,7 @@ QObject *RDetectFactory::create(QObject *parent)
 
 QDialog *RDetectFactory::createConfigDialog(QWidget *parent)
 {
-    Q_UNUSED(parent);
-    return nullptr;
+    return new SettingsDialog(parent);
 }
 
 void RDetectFactory::showAbout(QWidget *parent)
