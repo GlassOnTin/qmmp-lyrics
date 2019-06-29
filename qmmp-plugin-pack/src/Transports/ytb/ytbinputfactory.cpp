@@ -29,7 +29,7 @@ InputSourceProperties YtbInputFactory::properties() const
     InputSourceProperties properties;
     properties.protocols << "ytb";
     properties.name = tr("Youtube Plugin");
-    properties.shortName = "http";
+    properties.shortName = "ytb";
     properties.hasAbout = false;
     properties.hasSettings = false;
     return properties;
