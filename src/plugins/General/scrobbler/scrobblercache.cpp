@@ -61,12 +61,12 @@ uint SongInfo::timeStamp() const
     return m_start_ts;
 }
 
-ScrobblerCache::ScrobblerCache(const QString &filePath)
+ListenCache::ListenCache(const QString &filePath)
 {
     m_filePath = filePath;
 }
 
-QList<SongInfo> ScrobblerCache::load()
+QList<SongInfo> ListenCache::load()
 {
     QList<SongInfo> songs;
     int s = 0;
@@ -115,7 +115,7 @@ QList<SongInfo> ScrobblerCache::load()
     return songs;
 }
 
-void ScrobblerCache::save(const QList<SongInfo> &songs)
+void ListenCache::save(const QList<SongInfo> &songs)
 {
     QFile file(m_filePath);
     if (songs.isEmpty())
