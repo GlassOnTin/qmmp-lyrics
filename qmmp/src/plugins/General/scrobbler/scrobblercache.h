@@ -51,10 +51,10 @@ private:
 /**
     @author Ilya Kotov <forkotov02@ya.ru>
 */
-class ScrobblerCache
+class ListenCache
 {
 public:
-    explicit ScrobblerCache(const QString &filePath);
+    explicit ListenCache(const QString &filePath);
 
     QList<SongInfo> load();
     void save(const QList<SongInfo> &songs);
