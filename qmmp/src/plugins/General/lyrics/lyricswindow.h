@@ -43,7 +43,9 @@ public:
 
 private slots:
     void onRequestFinished(QNetworkReply *reply);
-    void on_searchPushButton_clicked();
+    void on_refreshButton_clicked();
+    void on_editButton_clicked(bool checked);
+    void on_providerComboBox_activated(int index);
     QString cacheFilePath() const;
     bool loadFromCache();
     void saveToCache(const QString &text);
@@ -55,6 +57,7 @@ private:
     UltimateLyricsParser m_parser;
     TrackInfo m_info;
     QHash<QNetworkReply *, QString> m_tasks;
+    QStringList m_enabledProviders;
 };
 
 #endif
