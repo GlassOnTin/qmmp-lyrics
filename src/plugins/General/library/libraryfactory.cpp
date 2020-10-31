@@ -21,7 +21,7 @@
 #include <QMessageBox>
 #include <QtPlugin>
 #include <qmmp/qmmp.h>
-//#include "history.h"
+#include "library.h"
 //#include "historysettingsdialog.h"
 #include "libraryfactory.h"
 
@@ -38,11 +38,12 @@ GeneralProperties LibraryFactory::properties() const
 
 QObject *LibraryFactory::create(QObject *parent)
 {
-    return nullptr;
+    return new Library(parent);
 }
 
 QDialog *LibraryFactory::createConfigDialog(QWidget *parent)
 {
+    Q_UNUSED(parent);
     return nullptr;
 }
 
