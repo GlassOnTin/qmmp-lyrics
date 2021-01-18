@@ -20,8 +20,9 @@
 #ifndef DECODERFFMPEGFACTORY_H
 #define DECODERFFMPEGFACTORY_H
 
-
 #include <qmmp/decoderfactory.h>
+
+struct AVFormatContext;
 
 class DecoderFFmpegFactory : public QObject, DecoderFactory
 {
@@ -39,6 +40,9 @@ public:
     void showSettings(QWidget *parent) override;
     void showAbout(QWidget *parent) override;
     QString translation() const override;
+
+private:
+    QList<TrackInfo *> createPlayListFromChapters(AVFormatContext *in, TrackInfo *info, int trackNumber);
 };
 
 #endif
