@@ -1,21 +1,18 @@
 #!/bin/sh
 
 NAME=libcdio
-VERSION=0.83
+VERSION=2.1.0
 
 case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc http://ftp.gnu.org/gnu/libcdio/$NAME-$VERSION.tar.gz
+    wget -nc http://ftp.gnu.org/gnu/libcdio/$NAME-$VERSION.tar.bz2
   ;;
   --install)
     cd temp
-    tar xvzf $NAME-$VERSION.tar.gz
+    tar xvjf $NAME-$VERSION.tar.bz2
     cd $NAME-$VERSION
-    cat ../../0001*.patch | patch -p1
-    cat ../../0002*.patch | patch -p1
-    cat ../../0003*.patch | patch -p1
     autoreconf -fi
     CFLAGS="-march=i686" ./configure --prefix=$PREFIX --enable-shared --disable-static --disable-cxx --disable-example-progs \
     --disable-cddb --without-cd-drive --without-cd-info --without-cdda-player \
