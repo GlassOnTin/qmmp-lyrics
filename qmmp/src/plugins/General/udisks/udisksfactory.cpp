@@ -20,7 +20,7 @@
 
 #include <QMessageBox>
 #include <qmmp/qmmp.h>
-#include "settingsdialog.h"
+#include "udiskssettingsdialog.h"
 #include "udisksplugin.h"
 #include "udisksfactory.h"
 
@@ -28,7 +28,7 @@ GeneralProperties UDisksFactory::properties() const
 {
     GeneralProperties properties;
     properties.name = tr("UDisks Plugin");
-    properties.shortName = "udisks";
+    properties.shortName = "udisks"_L1;
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.visibilityControl = false;
@@ -42,15 +42,15 @@ QObject *UDisksFactory::create(QObject *parent)
 
 QDialog *UDisksFactory::createConfigDialog(QWidget *parent)
 {
-    return new SettingsDialog(parent);
+    return new UDisksSettingsDialog(parent);
 }
 
 void UDisksFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About UDisks Plugin"),
-                        tr("Qmmp UDisks Plugin") + "\n" +
-                        tr("This plugin provides removable devices detection using UDisks") + "\n" +
-                        tr("Written by: Ilya Kotov <forkotov02@ya.ru>"));
+    QMessageBox::about(parent, tr("About UDisks Plugin"),
+                       tr("Qmmp UDisks Plugin") + QChar::LineFeed +
+                       tr("This plugin provides removable devices detection using UDisks") + QChar::LineFeed +
+                       tr("Written by: Ilya Kotov <forkotov02@ya.ru>"));
 }
 
 QString UDisksFactory::translation() const
