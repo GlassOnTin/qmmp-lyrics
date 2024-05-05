@@ -20,7 +20,7 @@
 
 #include <QMessageBox>
 #include <qmmp/qmmp.h>
-#include "settingsdialog.h"
+#include "rdetectsettingsdialog.h"
 #include "removablehelper.h"
 #include "rdetectfactory.h"
 
@@ -42,7 +42,7 @@ QObject *RDetectFactory::create(QObject *parent)
 
 QDialog *RDetectFactory::createSettings(QWidget *parent)
 {
-    return new SettingsDialog(parent);
+    return new RDetectSettingsDialog(parent);
 }
 
 void RDetectFactory::showAbout(QWidget *parent)
