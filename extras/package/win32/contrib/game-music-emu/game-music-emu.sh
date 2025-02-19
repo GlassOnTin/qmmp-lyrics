@@ -1,17 +1,17 @@
 #!/bin/sh
 
 NAME=game-music-emu
-VERSION=0.6.3
+VERSION=0.6.4
 
 case $1 in
   --download)
     mkdir -p temp
     cd temp
-    wget -nc https://bitbucket.org/mpyne/game-music-emu/downloads/$NAME-$VERSION.tar.xz -O $NAME-$VERSION.tar.xz
+    wget -nc https://github.com/libgme/game-music-emu/releases/download/$VERSION/$NAME-$VERSION-src.tar.gz -O $NAME-$VERSION.tar.gz
   ;;
   --install)
     cd temp
-    tar xvJf $NAME-$VERSION.tar.xz
+    tar xvzf $NAME-$VERSION.tar.gz
     cd $NAME-$VERSION
     cmake ./ -DCMAKE_INSTALL_PREFIX=$PREFIX -G "MSYS Makefiles" -DCMAKE_COLOR_MAKEFILE:BOOL=OFF -DENABLE_UBSAN:BOOL=OFF
     make -j${JOBS}
