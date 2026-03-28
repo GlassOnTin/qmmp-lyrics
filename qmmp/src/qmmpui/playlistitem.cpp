@@ -20,20 +20,28 @@
 #include <qmmp/metadatamanager.h>
 #include "playlistitem.h"
 
-PlayListItem::PlayListItem()
+class PlayListItemPrivate
+{
+public:
+    bool selected = false;
+};
+
+PlayListItem::PlayListItem() : d_ptr(new PlayListItemPrivate)
 {}
 
 PlayListItem::~PlayListItem()
-{}
+{
+    delete d_ptr;
+}
 
 void PlayListItem::setSelected(bool yes)
 {
-    m_selected = yes;
+    d_ptr->selected = yes;
 }
 
 bool PlayListItem::isSelected() const
 {
-    return m_selected;
+    return d_ptr->selected;
 }
 
 int PlayListItem::trackIndex() const
