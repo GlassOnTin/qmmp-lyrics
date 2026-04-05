@@ -22,6 +22,7 @@
 #define TAGEDITOR_H
 
 #include <QWidget>
+#include "editorbase_p.h"
 
 namespace Ui {
     class TagEditor;
@@ -32,20 +33,22 @@ class TagModel;
 /*! @internal
  * @author Ilya Kotov <forkotov02@ya.ru>
  */
-class TagEditor : public QWidget
+class TagEditor : public EditorBase
 {
 Q_OBJECT
 public:
-    explicit TagEditor(TagModel *tagModel, QWidget *parent = nullptr);
+    explicit TagEditor(TagModel *tagModel, bool readOnly, QWidget *parent = nullptr);
     ~TagEditor();
 
-    void save();
+    bool isEditable() const override;
+    void save() override;
 
 private:
-    void readTag();
+    void readTags();
     Ui::TagEditor *m_ui;
     TagModel *m_tagModel;
     int m_discs = -1; //Number of discs
+    bool m_readOnly = false;
 
 };
 
