@@ -91,7 +91,7 @@ CueEditor::CueEditor(MetaDataModel *model, const TrackInfo &info, QWidget *paren
         m_ui->plainTextEdit->setReadOnly(true);
     }
 
-    connect(m_ui->plainTextEdit, &QPlainTextEdit::undoAvailable, this, &CueEditor::setModified);
+    connect(m_ui->plainTextEdit, &QPlainTextEdit::modificationChanged, this, &CueEditor::setModified);
 }
 
 CueEditor::~CueEditor()
@@ -116,6 +116,7 @@ void CueEditor::save()
         m_model->setCue(data);
         m_parser.loadData(data.toUtf8());
     }
+    m_ui->plainTextEdit->document()->setModified(false);
 }
 
 bool CueEditor::isEditable() const
@@ -139,14 +140,14 @@ void CueEditor::on_loadButton_clicked()
             m_ui->plainTextEdit->setPlainText(QString::fromUtf8(file.readAll()));
         else
             m_ui->plainTextEdit->clear();
-        setModified();
+        setModified(true);
     }
 }
 
 void CueEditor::on_deleteButton_clicked()
 {
     m_ui->plainTextEdit->clear();
-    setModified();
+    setModified(true);
 }
 
 void CueEditor::on_saveAsButton_clicked()

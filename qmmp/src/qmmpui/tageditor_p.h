@@ -43,6 +43,9 @@ public:
     bool isEditable() const override;
     void save() override;
 
+private slots:
+    void setModified();
+
 private:
     void readTags();
     Ui::TagEditor *m_ui;
