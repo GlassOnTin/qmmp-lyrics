@@ -78,6 +78,7 @@ build ()
 {
   QMMP_INSTALL_PREFIX=`dirs`/qmmp-distr 
   cd qmmp-${QMMP_VERSION}
+  cat ../../qmmp-fix-cache-patch.patch | patch -p0
   cmake . -G "MSYS Makefiles" -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
   -DUSE_LIBRCD=ON -DUSE_DIR_ASSOC=OFF -DUSE_CONVERTER=OFF \
