@@ -26,7 +26,6 @@
 #include <QApplication>
 #include <QFile>
 #include <QSet>
-#include <algorithm>
 #include <qmmp/qmmp.h>
 #include "skinreader.h"
 
