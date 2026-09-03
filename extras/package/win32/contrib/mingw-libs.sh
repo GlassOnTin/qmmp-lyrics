@@ -9,7 +9,7 @@ if [ -n "`uname | grep 5.1`"  ]; then
     LIB_NAMES+='taglib-1.13 ffmpeg-3.4 libsidplayfp-2.3 wavpack-5.6 glew-2.2 projectm'
     export WGET_ARGS=--no-check-certificate
 else
-    LIB_NAMES+='utf8cpp taglib ffmpeg libsidplayfp wavpack glew projectm'
+    LIB_NAMES+='utf8cpp taglib ffmpeg libresidfp libsidplayfp wavpack glew projectm'
 fi
 
 export DEV_PATH=/c/devel
