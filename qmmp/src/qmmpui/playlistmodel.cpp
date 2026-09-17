@@ -443,7 +443,7 @@ private:
     PlayListTrack *currentTrack = nullptr;
     PlayListTrack *stopTrack = nullptr;
     int currentTrackIndex = -1;
-    PlayState *playState; /*!< Current playing state (Normal or Shuffle) */
+    PlayState *playState = nullptr; /*!< Current playing state (Normal or Shuffle) */
     qint64 totalDuration = 0;
     FileLoader *loader;
     CoverLoader *coverLoder;
@@ -471,10 +471,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent) :
     connect(d->task, &PlayListTask::finished, this, [d]{ d->onTaskFinished(); });
     connect(d->task, &PlayListTask::finished, this, [d]{ d->startCoverLoader(); });
 
-    if(d->uiSettings->isShuffle())
-        d->playState = new ShufflePlayState(this);
-    else
-        d->playState = new NormalPlayState(this);
+    d->prepareForShufflePlaying(d->uiSettings->isShuffle());
 }
 
 PlayListModel::~PlayListModel()
