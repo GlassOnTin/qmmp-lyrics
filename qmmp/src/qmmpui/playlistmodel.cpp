@@ -879,9 +879,9 @@ void PlayListModel::clearSelection()
     emit listChanged(SELECTION);
 }
 
-bool PlayListModel::contains(const QString &url)
+bool PlayListModel::contains(const QString &url) const
 {
-    Q_D(PlayListModel);
+    Q_D(const PlayListModel);
     for(int i = 0; i < d->container->trackCount(); ++i)
     {
         PlayListTrack *t = d->container->track(i);

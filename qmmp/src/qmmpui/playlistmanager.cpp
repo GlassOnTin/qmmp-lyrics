@@ -444,7 +444,7 @@ PlayListModel *PlayListManager::playListAt(int i) const
     return nullptr;
 }
 
-PlayListHeaderModel *PlayListManager::headerModel()
+PlayListHeaderModel *PlayListManager::headerModel() const
 {
     return d_ptr->header;
 }

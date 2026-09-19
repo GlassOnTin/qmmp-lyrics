@@ -312,7 +312,7 @@ public:
     /*!
      * Returns \b true if the playlist contains an item with URL \b url; otherwise returns \b false.
      */
-    bool contains(const QString &url);
+    bool contains(const QString &url) const;
     /*!
      * Enum of the available sort modes.
      */

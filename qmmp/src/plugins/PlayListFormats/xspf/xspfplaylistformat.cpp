@@ -37,7 +37,7 @@ PlayListFormatProperties XSPFPlaylistFormat::XSPFPlaylistFormat::properties() co
     return p;
 }
 
-QList<PlayListTrack*> XSPFPlaylistFormat::decode(const QByteArray &contents)
+QList<PlayListTrack*> XSPFPlaylistFormat::decode(const QByteArray &contents) const
 {
     QList<PlayListTrack*> out;
     QString currentTag;
@@ -111,7 +111,7 @@ QList<PlayListTrack*> XSPFPlaylistFormat::decode(const QByteArray &contents)
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
 
-QByteArray XSPFPlaylistFormat::encode(const QList<PlayListTrack*> &files, const QString &path)
+QByteArray XSPFPlaylistFormat::encode(const QList<PlayListTrack*> &files, const QString &path) const
 {
     QString xspfDir = QFileInfo(path).canonicalPath();
     QByteArray out;

@@ -64,8 +64,8 @@ public:
      * \param default_template This template will be placed in the text edit if the user pressed Reset.
      * \param ok This varible will be set to \b true (\b false) if the user pressed OK (Cancel).
      */
-    static QString getTemplate (QWidget *parent, const QString &title, const QString &text = QString(),
-                                const QString &default_template = QString(), bool *ok = nullptr);
+    static QString getTemplate(QWidget *parent, const QString &title, const QString &text = QString(),
+                               const QString &default_template = QString(), bool *ok = nullptr);
 
 private:
     TemplateEditorPrivate *d_ptr;

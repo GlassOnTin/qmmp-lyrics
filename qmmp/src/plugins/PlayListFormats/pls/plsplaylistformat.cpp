@@ -32,7 +32,7 @@ PlayListFormatProperties PLSPlaylistFormat::properties() const
     return p;
 }
 
-QList<PlayListTrack *> PLSPlaylistFormat::decode(const QByteArray &contents)
+QList<PlayListTrack *> PLSPlaylistFormat::decode(const QByteArray &contents) const
 {
     QList<PlayListTrack *> out;
     QStringList splitted = QString::fromUtf8(contents).split(QChar::LineFeed);
@@ -119,7 +119,7 @@ QList<PlayListTrack *> PLSPlaylistFormat::decode(const QByteArray &contents)
     return out;
 }
 
-QByteArray PLSPlaylistFormat::encode(const QList<PlayListTrack *> &contents, const QString &path)
+QByteArray PLSPlaylistFormat::encode(const QList<PlayListTrack *> &contents, const QString &path) const
 {
     Q_UNUSED(path);
     MetaDataFormatter formatter(u"%if(%p,%p - %t,%t)%if(%p|%t,,%f)"_s);

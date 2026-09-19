@@ -280,7 +280,7 @@ MediaPlayer *MediaPlayer::instance()
     return MediaPlayerPrivate::instance;
 }
 
-PlayListManager *MediaPlayer::playListManager()
+PlayListManager *MediaPlayer::playListManager() const
 {
     return d_ptr->plManager;
 }

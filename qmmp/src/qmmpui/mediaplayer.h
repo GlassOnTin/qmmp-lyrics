@@ -51,7 +51,7 @@ public:
     /*!
      * Returns playlist manager pointer
      */
-    PlayListManager *playListManager();
+    PlayListManager *playListManager() const;
 
 signals:
     /*!

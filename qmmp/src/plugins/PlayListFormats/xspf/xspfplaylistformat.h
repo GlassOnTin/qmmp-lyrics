@@ -37,8 +37,8 @@ class XSPFPlaylistFormat : public QObject, public PlayListFormat
     Q_INTERFACES(PlayListFormat)
 public:
     PlayListFormatProperties properties() const override;
-    QList<PlayListTrack*> decode(const QByteArray &contents) override;
-    QByteArray encode(const QList<PlayListTrack*> &contents, const QString &path) override;
+    QList<PlayListTrack*> decode(const QByteArray &contents) const override;
+    QByteArray encode(const QList<PlayListTrack*> &contents, const QString &path) const override;
 };
 
 #endif

@@ -89,7 +89,7 @@ public:
     /*!
      * Returns playlist header model.
      */
-    PlayListHeaderModel *headerModel();
+    PlayListHeaderModel *headerModel() const;
 
 signals:
     /*!

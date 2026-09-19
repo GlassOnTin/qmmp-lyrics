@@ -33,7 +33,7 @@ PlayListFormatProperties M3UPlaylistFormat::properties() const
     return p;
 }
 
-QList<PlayListTrack *> M3UPlaylistFormat::decode(const QByteArray &contents)
+QList<PlayListTrack *> M3UPlaylistFormat::decode(const QByteArray &contents) const
 {
     QList<PlayListTrack*> out;
     const QStringList splitted = QString::fromUtf8(contents).split(QChar::LineFeed);
@@ -85,7 +85,7 @@ QList<PlayListTrack *> M3UPlaylistFormat::decode(const QByteArray &contents)
     return out;
 }
 
-QByteArray M3UPlaylistFormat::encode(const QList<PlayListTrack*> &contents, const QString &path)
+QByteArray M3UPlaylistFormat::encode(const QList<PlayListTrack*> &contents, const QString &path) const
 {
     QStringList out = { u"#EXTM3U"_s };
     MetaDataFormatter formatter(u"%if(%p,%p - %t,%t)%if(%p|%t,,%f)"_s);
