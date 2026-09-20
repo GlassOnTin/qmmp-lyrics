@@ -24,6 +24,7 @@
 #include <QtGlobal>
 #include <QElapsedTimer>
 #include <QMutex>
+#include <array>
 
 #define VISUAL_BUFFER_SIZE 128 //number of nodes
 
@@ -50,7 +51,7 @@ public:
     QMutex *mutex();
 
 private:
-    VisualNode m_buffer[VISUAL_BUFFER_SIZE];
+    std::array<VisualNode, VISUAL_BUFFER_SIZE> m_buffer;
     qint64 m_elapsed = 0;
     int m_take_index = 0;
     int m_add_index = 0;

@@ -46,13 +46,13 @@ VisualBuffer::VisualBuffer()
 void VisualBuffer::add(float *pcm, int samples, int channels, qint64 ts, qint64 delay)
 {
     m_add_index++;
-    m_add_index %= VISUAL_BUFFER_SIZE;
+    m_add_index %= m_buffer.size();
     VisualNode *b = &m_buffer[m_add_index];
     stereo_from_multichannel(b->data[0], b->data[1], pcm, qMin(512, samples / channels), channels);
     b->delta = m_time.elapsed();
     if(delay <= 0) //try to guess delay by elapsed time between function calls
     {
-        for(int i = 0; i < VISUAL_BUFFER_SIZE; ++i)
+        for(std::size_t i = 0; i < m_buffer.size(); ++i)
             delay = qMax(m_buffer[i].delta, delay);
     }
     b->ts = ts + qBound(50LL, delay, 1000LL); //limit visualization delay
@@ -62,12 +62,12 @@ void VisualBuffer::add(float *pcm, int samples, int channels, qint64 ts, qint64 
 
 VisualNode *VisualBuffer::take()
 {
-    int steps = 0;
+    std::size_t steps = 0;
     qint64 t = m_elapsed + m_time.elapsed();
-    while((m_buffer[m_take_index].ts < t) && (steps++ < VISUAL_BUFFER_SIZE))
+    while((m_buffer[m_take_index].ts < t) && (steps++ < m_buffer.size()))
     {
         m_take_index++;
-        m_take_index %= VISUAL_BUFFER_SIZE;
+        m_take_index %= m_buffer.size();
     }
 
     if(m_buffer[m_take_index].ts < t) //unable to find node
@@ -84,7 +84,7 @@ void VisualBuffer::clear()
     m_take_index = 0;
     m_add_index = 0;
     m_elapsed = 0;
-    for(int i = 0; i < VISUAL_BUFFER_SIZE; ++i)
+    for(std::size_t i = 0; i < m_buffer.size(); ++i)
     {
         m_buffer[i].ts = 0;
         m_buffer[i].delta = 0;
