@@ -123,6 +123,15 @@ void QSUiListWidgetDrawer::readSettings()
         m_current = scheme.color(QSUiColorScheme::PL_CURRENT_TRACK_TEXT);
     }
 
+    if(!scheme.plAlternateRowColors())
+    {
+        m_alternate_bg = m_normal_bg;
+        if(!scheme.plOverrideGroupColors())
+            m_group_alt_bg = m_group_bg;
+        if(!scheme.plOverrideCurrentTrackColors())
+            m_current_alt_bg = m_current_bg;
+    }
+
     for(int i = 0; i <= PL_GROUP_FONT_EXTRA; ++i)
     {
         delete m_metrics[i];
@@ -137,15 +146,6 @@ void QSUiListWidgetDrawer::readSettings()
         m_row_height = getRowHeightFromStyle();
 
     m_text_offset = m_metrics[MAIN_FONT_NORMAL]->overlinePos() + qMax(0, (m_row_height - m_metrics[MAIN_FONT_NORMAL]->lineSpacing()) / 2) - 1;
-
-    if(!settings.value(u"pl_alternate_row_colors"_s, true).toBool())
-    {
-        m_alternate_bg = m_normal_bg;
-        if(!scheme.plOverrideCurrentTrackColors())
-            m_group_alt_bg = m_group_bg;
-        if(!scheme.plOverrideCurrentTrackColors())
-            m_current_alt_bg = m_current_bg;
-    }
 
     settings.endGroup();
 }
