@@ -237,7 +237,7 @@
     <message>
         <location filename="../forms/qsuisettings.ui" line="87"/>
         <source>Reduce row spacing</source>
-        <translation type="unfinished"></translation>
+        <translation>Уменьшить межстрочный интервал</translation>
     </message>
     <message>
         <location filename="../forms/qsuisettings.ui" line="156"/>
@@ -1015,7 +1015,7 @@
     <message>
         <location filename="../qsuicolorschemewidget.cpp" line="65"/>
         <source>Alternate row colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Разные цвета строк</translation>
     </message>
     <message>
         <location filename="../qsuicolorschemewidget.cpp" line="66"/>
