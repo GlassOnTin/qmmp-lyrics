@@ -132,7 +132,7 @@
             <string notr="true">...</string>
            </property>
            <property name="icon">
-            <iconset theme="accessories-text-editor">
+            <iconset theme="document-properties">
              <normaloff>.</normaloff>.</iconset>
            </property>
            <property name="checkable">
