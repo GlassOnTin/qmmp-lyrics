@@ -168,7 +168,7 @@
             <string>Follow</string>
            </property>
            <property name="icon">
-            <iconset theme="media-playback-start">
+            <iconset theme="crosshairs">
              <normaloff>.</normaloff>.</iconset>
            </property>
            <property name="checkable">
