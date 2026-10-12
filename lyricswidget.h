@@ -22,11 +22,15 @@
 
 #include <QWidget>
 #include <QList>
+#include <QMetaObject>
+#include <QPointer>
 #include <qmmp/trackinfo.h>
 #include "ultimatelyricsparser.h"
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QListWidgetItem;
+class PlayListModel;
 class TrackInfo;
 
 namespace Ui {
@@ -45,6 +49,7 @@ public:
     ~LyricsWidget();
 
     void fetch(const TrackInfo *info);
+    void fetch(const PlayListTrack *track); //untagged tracks fall back to the file name
     QString cacheFilePath() const;
 
 private slots:
@@ -57,8 +62,26 @@ private slots:
     bool loadFromCache();
     void saveToCache(const QString &text);
 
+    void onTrackListChanged(int flags);
+    void onPrevTrackClicked();
+    void onNextTrackClicked();
+    void onTrackClicked(int row);
+    void onTrackDoubleClicked(QListWidgetItem *item);
+    void onFollowToggled(bool on);
+    void onPlaylistPaneToggled(bool visible);
+    void onTrackInfoChanged();
+    void onCurrentPlayListChanged();
+    void onSelectedPlayListChanged();
+
 private:
     void closeEvent(QCloseEvent *) override;
+    void rebindModel(PlayListModel *model);
+    void updateTrackList();
+    void highlightCurrent(bool sync);
+    void setFollow(bool on, bool userAction);
+    void browseRow(int direction);
+    int playingRow() const;
+
     Ui::LyricsWidget *m_ui;
     QNetworkAccessManager *m_http;
     QString m_cachePath;
@@ -67,6 +90,9 @@ private:
     QList<QNetworkReply *> m_tasks;
     QStringList m_enabledProviders;
     bool m_fetchByRequest;
+    QPointer<PlayListModel> m_model;
+    QList<QMetaObject::Connection> m_modelConnections;
+    bool m_follow = true;
 };
 
 #endif

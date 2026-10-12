@@ -24,13 +24,40 @@
 #include <QUrl>
 #include <QFile>
 #include <QDir>
+#include <QFileInfo>
+#include <QListWidgetItem>
+#include <QListWidget>
 #include <QSettings>
 #include <QCryptographicHash>
+#include <utility>
 #include <qmmp/metadatamanager.h>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
+#include <qmmp/soundcore.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistmanager.h>
+#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistitem.h>
 #include "ui_lyricswidget.h"
 #include "lyricswidget.h"
+
+//Title actually used for lyric lookups: untagged tracks fall back to the file
+//name, the same value the playlist pane displays.
+static QString displayTitle(const PlayListTrack *track)
+{
+    QString title = track->value(Qmmp::TITLE);
+    if(title.isEmpty())
+        title = QFileInfo(TrackInfo::pathFromUrl(track->path())).fileName();
+    return title;
+}
+
+//whether a track is on; PlayListModel sets currentIndex=0 as soon as the list
+//becomes non-empty, which alone means nothing to follow
+static bool playbackActive()
+{
+    Qmmp::State state = SoundCore::instance()->state();
+    return state == Qmmp::Playing || state == Qmmp::Paused;
+}
 
 LyricsWidget::LyricsWidget(bool dialog, QWidget *parent) : QWidget(parent),
     m_ui(new Ui::LyricsWidget)
@@ -79,9 +106,39 @@ LyricsWidget::LyricsWidget(bool dialog, QWidget *parent) : QWidget(parent),
     QSettings settings;
     m_enabledProviders = settings.value(u"Lyrics/enabled_providers"_s, m_parser.defaultProviders()).toStringList();
     m_fetchByRequest = settings.value(u"Lyrics/fetch_by_request"_s, false).toBool();
+    m_follow = settings.value(u"Lyrics/follow_playing"_s, true).toBool();
+    bool showPlaylist = settings.value(u"Lyrics/playlist_shown"_s, true).toBool();
 
     if(dialog)
         restoreGeometry(settings.value(u"Lyrics/geometry"_s).toByteArray());
+
+    //restore the playlist pane state
+    m_ui->playlistButton->blockSignals(true);
+    m_ui->playlistButton->setChecked(showPlaylist);
+    m_ui->playlistButton->blockSignals(false);
+    m_ui->trackListWidget->setVisible(showPlaylist);
+    QByteArray splitterState = settings.value(u"Lyrics/splitter_state"_s).toByteArray();
+    if(!splitterState.isEmpty())
+        m_ui->trackSplitter->restoreState(splitterState);
+
+    //playlist pane
+    connect(m_ui->prevTrackButton, &QToolButton::clicked, this, &LyricsWidget::onPrevTrackClicked);
+    connect(m_ui->nextTrackButton, &QToolButton::clicked, this, &LyricsWidget::onNextTrackClicked);
+    connect(m_ui->trackListWidget, &QListWidget::currentRowChanged, this, &LyricsWidget::onTrackClicked);
+    connect(m_ui->trackListWidget, &QListWidget::itemDoubleClicked, this, &LyricsWidget::onTrackDoubleClicked);
+    connect(m_ui->followButton, &QToolButton::toggled, this, &LyricsWidget::onFollowToggled);
+    connect(m_ui->playlistButton, &QToolButton::toggled, this, &LyricsWidget::onPlaylistPaneToggled);
+
+    m_ui->followButton->blockSignals(true);
+    m_ui->followButton->setChecked(m_follow);
+    m_ui->followButton->blockSignals(false);
+
+    //playlist tracking
+    PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
+    connect(pl_manager, &PlayListManager::currentPlayListChanged, this, &LyricsWidget::onCurrentPlayListChanged);
+    connect(pl_manager, &PlayListManager::selectedPlayListChanged, this, &LyricsWidget::onSelectedPlayListChanged);
+    connect(SoundCore::instance(), &SoundCore::trackInfoChanged, this, &LyricsWidget::onTrackInfoChanged);
+    rebindModel(pl_manager->currentPlayList());
 
     QDir cacheDir(m_cachePath);
     if(!cacheDir.exists())
@@ -118,6 +175,14 @@ void LyricsWidget::fetch(const TrackInfo *info)
             on_refreshButton_clicked();
         }
     }
+}
+
+//Playlist tracks with no title tag get their file name as the lookup title
+void LyricsWidget::fetch(const PlayListTrack *track)
+{
+    TrackInfo info(*track);
+    info.setValue(Qmmp::TITLE, displayTitle(track));
+    fetch(&info);
 }
 
 QString LyricsWidget::cacheFilePath() const
@@ -292,11 +357,265 @@ void LyricsWidget::saveToCache(const QString &text)
     file.write(text.toUtf8());
 }
 
-void LyricsWidget::closeEvent(QCloseEvent *)
+//*************************************************************************
+// Playlist pane
+//*************************************************************************
+
+void LyricsWidget::rebindModel(PlayListModel *model)
 {
-    if(windowFlags() & Qt::Dialog)
+    for(const QMetaObject::Connection &c : std::as_const(m_modelConnections))
+        disconnect(c);
+    m_modelConnections.clear();
+
+    m_model = model;
+    if(m_model)
+        m_modelConnections << connect(m_model, &PlayListModel::listChanged, this, &LyricsWidget::onTrackListChanged);
+
+    updateTrackList();
+}
+
+void LyricsWidget::updateTrackList()
+{
+    QListWidget *list = m_ui->trackListWidget;
+    int browsed = list->currentRow();
+    int count = m_model ? m_model->trackCount() : 0;
+    int current = m_model ? m_model->currentIndex() : -1;
+
+    list->blockSignals(true);
+    list->clear();
+
+    QFont regular = font();
+    QFont bold = font();
+    bold.setBold(true);
+
+    for(int i = 0; i < count; ++i)
+    {
+        PlayListTrack *track = m_model->track(i);
+        QString title = track->value(Qmmp::TITLE);
+        QString artist = track->value(Qmmp::ARTIST);
+        if(title.isEmpty())
+            title = QFileInfo(TrackInfo::pathFromUrl(track->path())).fileName();
+        else if(artist.isEmpty())
+            artist = tr("[unknown artist]");
+
+        QString text;
+        if(artist.isEmpty())
+            text = title;
+        else
+            text = artist + u" - "_s + title;
+
+        QString duration = track->formattedDuration();
+        if(!duration.isEmpty())
+            text += u" ("_s + duration + u")"_s;
+
+        QListWidgetItem *item = new QListWidgetItem(u"%1. %2"_s.arg(i + 1).arg(text), list);
+        item->setToolTip(track->path());
+        item->setFont(i == current ? bold : regular);
+    }
+
+    if(count == 0)
+    {
+        QListWidgetItem *item = new QListWidgetItem(tr("No tracks"), list);
+        item->setFlags(Qt::NoItemFlags);
+    }
+    list->blockSignals(false);
+
+    m_ui->prevTrackButton->setEnabled(count > 0);
+    m_ui->nextTrackButton->setEnabled(count > 0);
+
+    //keep a browsed track in view after the list was rebuilt
+    if(m_follow && playbackActive())
+        highlightCurrent(true);
+    else if(browsed >= 0)
+    {
+        list->blockSignals(true);
+        list->setCurrentRow(qMin(browsed, count - 1));
+        list->blockSignals(false);
+    }
+}
+
+void LyricsWidget::highlightCurrent(bool sync)
+{
+    if(!m_model)
+        return;
+
+    //bold marker on the current/playing track
+    int current = m_model->currentIndex();
+    QFont regular = font();
+    QFont bold = font();
+    bold.setBold(true);
+    for(int i = 0; i < m_model->trackCount(); ++i)
+    {
+        if(QListWidgetItem *item = m_ui->trackListWidget->item(i))
+            item->setFont(i == current ? bold : regular);
+    }
+
+    //syncing moves the selection and looks up lyrics; while following is off
+    //(browsing), the marker alone is updated and the view stays put. Nothing
+    //is playing yet -> nothing to mirror
+    if(!sync || m_model->trackCount() == 0 || current < 0)
+        return;
+
+    int row = qMin(current, m_model->trackCount() - 1);
+    QListWidget *list = m_ui->trackListWidget;
+    if(list->currentRow() != row)
+    {
+        list->blockSignals(true);
+        list->setCurrentRow(row);
+        list->blockSignals(false);
+    }
+    list->scrollToItem(list->item(row), QAbstractItemView::EnsureVisible);
+
+    //show lyrics of the current track, unless it is already displayed
+    if(PlayListTrack *track = m_model->track(row);
+       m_ui->artistLineEdit->text() != track->value(Qmmp::ARTIST)
+       || m_ui->titleLineEdit->text() != displayTitle(track))
+    {
+        fetch(track);
+    }
+}
+
+void LyricsWidget::onTrackListChanged(int flags)
+{
+    if(flags & (PlayListModel::STRUCTURE | PlayListModel::METADATA))
+        updateTrackList();
+    else if(flags & PlayListModel::CURRENT)
+    {
+        if(m_follow && playbackActive())
+            highlightCurrent(true);
+        else
+            highlightCurrent(false); //restyle only, keep browsed lyrics
+    }
+}
+
+void LyricsWidget::onTrackInfoChanged()
+{
+    if(m_follow)
+        highlightCurrent(true);
+}
+
+void LyricsWidget::onCurrentPlayListChanged()
+{
+    rebindModel(MediaPlayer::instance()->playListManager()->currentPlayList());
+}
+
+void LyricsWidget::onSelectedPlayListChanged()
+{
+    //mirror the playlist the user is looking at, but only while nothing plays
+    Qmmp::State state = SoundCore::instance()->state();
+    if(state != Qmmp::Playing && state != Qmmp::Paused)
+        rebindModel(MediaPlayer::instance()->playListManager()->selectedPlayList());
+}
+
+void LyricsWidget::onPrevTrackClicked()
+{
+    browseRow(-1);
+}
+
+void LyricsWidget::onNextTrackClicked()
+{
+    browseRow(1);
+}
+
+void LyricsWidget::browseRow(int direction)
+{
+    int count = m_model ? m_model->trackCount() : 0;
+    if(count == 0)
+        return;
+
+    setFollow(false, false); //browsing is not following
+
+    int row = m_ui->trackListWidget->currentRow();
+    if(row < 0)
+        row = 0;
+    else
+    {
+        row += direction;
+        if(row >= count)
+            row = 0;
+        if(row < 0)
+            row = count - 1;
+    }
+    fetch(m_model->track(row));
+
+    QListWidget *list = m_ui->trackListWidget;
+    list->blockSignals(true);
+    list->setCurrentRow(row);
+    list->blockSignals(false);
+    list->scrollToItem(list->item(row), QAbstractItemView::EnsureVisible);
+}
+
+void LyricsWidget::onTrackClicked(int row)
+{
+    if(row < 0)
+        return;
+
+    if(playingRow() != row)   //picking another track turns following off
+        setFollow(false, false);
+
+    if(m_model && row < m_model->trackCount())
+        fetch(m_model->track(row));
+}
+
+void LyricsWidget::onTrackDoubleClicked(QListWidgetItem *item)
+{
+    if(!m_model || !item)
+        return;
+    int row = m_ui->trackListWidget->row(item);
+    PlayListTrack *track = m_model->track(row);
+    if(!track)
+        return;
+    m_model->setCurrent(track);
+    MediaPlayer::instance()->play();
+}
+
+void LyricsWidget::onFollowToggled(bool on)
+{
+    setFollow(on, true);
+    if(on)
+        highlightCurrent(true);
+}
+
+void LyricsWidget::onPlaylistPaneToggled(bool visible)
+{
+    m_ui->trackListWidget->setVisible(visible);
+    QSettings settings;
+    settings.setValue(u"Lyrics/playlist_shown"_s, visible);
+}
+
+void LyricsWidget::setFollow(bool on, bool userAction)
+{
+    if(m_follow == on)
+        return;
+
+    m_follow = on;
+    m_ui->followButton->blockSignals(true);
+    m_ui->followButton->setChecked(on);
+    m_ui->followButton->blockSignals(false);
+
+    if(userAction)
     {
         QSettings settings;
-        settings.setValue(u"Lyrics/geometry"_s, saveGeometry());
+        settings.setValue(u"Lyrics/follow_playing"_s, on);
     }
+}
+
+void LyricsWidget::closeEvent(QCloseEvent *)
+{
+    QSettings settings;
+    if(windowFlags() & Qt::Dialog)
+        settings.setValue(u"Lyrics/geometry"_s, saveGeometry());
+    settings.setValue(u"Lyrics/splitter_state"_s, m_ui->trackSplitter->saveState());
+}
+
+//The row a click keeps following: only meaningful while a track is actually
+//playing (or paused); -1 otherwise, so every click counts as browsing
+int LyricsWidget::playingRow() const
+{
+    if(!m_model)
+        return -1;
+    Qmmp::State state = SoundCore::instance()->state();
+    if(state != Qmmp::Playing && state != Qmmp::Paused)
+        return -1;
+    return m_model->currentIndex();
 }
