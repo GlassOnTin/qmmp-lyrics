@@ -23,9 +23,9 @@
 #include <QPointer>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
+#include <qmmp/trackinfo.h>
 
 class QAction;
-class SoundCore;
 class LyricsWidget;
 
 /**
@@ -42,9 +42,9 @@ public:
 
 private slots:
     void showLyrics();
-    void onTrackInfoChanged();
 
 private:
+    TrackInfo lyricsTarget() const;
     QAction *m_action;
     QPointer<LyricsWidget> *m_lyricsWidget;
 
