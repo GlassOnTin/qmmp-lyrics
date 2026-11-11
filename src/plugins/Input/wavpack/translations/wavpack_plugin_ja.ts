@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ja">
+<context>
+    <name>DecoderWavPackFactory</name>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="38"/>
+        <source>WavPack Plugin</source>
+        <translation>WavPack プラグイン</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="40"/>
+        <source>WavPack Files</source>
+        <translation>WavPack ファイル</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="180"/>
+        <source>About WavPack Audio Plugin</source>
+        <translation>WavPack 音響プラグインについて</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="181"/>
+        <source>Qmmp WavPack Audio Plugin</source>
+        <translation>QMMP WavPack 音響プラグイン</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="182"/>
+        <source>WavPack library version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="184"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@ya.ru&gt;</source>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@ya.ru&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>WavPackMetaDataModel</name>
+    <message>
+        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <source>Ratio</source>
+        <translation>率</translation>
+    </message>
+    <message>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
+        <source>Version</source>
+        <translation>版</translation>
+    </message>
+</context>
+</TS>

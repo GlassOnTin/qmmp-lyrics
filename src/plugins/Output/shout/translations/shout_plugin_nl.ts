@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
+<context>
+    <name>OutputShoutFactory</name>
+    <message>
+        <location filename="../outputshoutfactory.cpp" line="39"/>
+        <source>Icecast Plugin</source>
+        <translation>Icecast-plug-in</translation>
+    </message>
+    <message>
+        <location filename="../outputshoutfactory.cpp" line="63"/>
+        <source>About Icecast Output Plugin</source>
+        <translation>Over de Icecast-uitvoerplug-in</translation>
+    </message>
+    <message>
+        <location filename="../outputshoutfactory.cpp" line="64"/>
+        <source>Qmmp Icecast Output Plugin</source>
+        <translation>Icecast-uitvoerplug-in voor Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../outputshoutfactory.cpp" line="65"/>
+        <source>Compiled against libshout-%1</source>
+        <translation>Gebouwd met libshout-%1</translation>
+    </message>
+    <message>
+        <location filename="../outputshoutfactory.cpp" line="66"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@ya.ru&gt;</source>
+        <translation>Auteur: Ilya Kotov &lt;forkotov02@ya.ru&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>ShoutSettingsDialog</name>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="14"/>
+        <source>Connection Settings</source>
+        <translation>Verbindingsinstellingen</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="32"/>
+        <source>Host:</source>
+        <translation>Host:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="42"/>
+        <source>Port:</source>
+        <translation>Poort:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="56"/>
+        <source>Mount point:</source>
+        <translation>Aankoppelpunt:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="66"/>
+        <source>User:</source>
+        <translation>Gebruiker:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="76"/>
+        <source>Password:</source>
+        <translation>Wachtwoord:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="86"/>
+        <source>Quality:</source>
+        <translation>Kwaliteit:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="106"/>
+        <source>Sample rate:</source>
+        <translation>Samplesnelheid:</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="136"/>
+        <source>Public</source>
+        <translation>Openbaar</translation>
+    </message>
+    <message>
+        <location filename="../shoutsettingsdialog.ui" line="143"/>
+        <source>Hz</source>
+        <translation>Hz</translation>
+    </message>
+</context>
+</TS>
