@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="tr">
+<context>
+    <name>GoomWidget</name>
+    <message>
+        <location filename="../goomwidget.cpp" line="137"/>
+        <source>%1 - %2</source>
+        <translation>%1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="187"/>
+        <source>Refresh Rate</source>
+        <translation>Tazeleme Oranı</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="190"/>
+        <source>60 fps</source>
+        <translation>60 fps</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="191"/>
+        <source>50 fps</source>
+        <translation>50 fps</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="192"/>
+        <source>25 fps</source>
+        <translation>25 fps</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="198"/>
+        <source>&amp;Show Title</source>
+        <translation>&amp;Başlığı Göster</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="202"/>
+        <location filename="../goomwidget.cpp" line="204"/>
+        <source>&amp;Full Screen</source>
+        <translation>&amp;Tam Ekran</translation>
+    </message>
+    <message>
+        <location filename="../goomwidget.cpp" line="202"/>
+        <location filename="../goomwidget.cpp" line="204"/>
+        <source>F</source>
+        <translation>F</translation>
+    </message>
+</context>
+<context>
+    <name>VisualGoomFactory</name>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="30"/>
+        <source>Goom</source>
+        <translation>Goom</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="49"/>
+        <source>About Goom Visual Plugin</source>
+        <translation>Goom Görsel Eklentisi Hakkında</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="50"/>
+        <source>Qmmp Goom Visual Plugin</source>
+        <translation>Qmmp Goom Görsel Eklentisi</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="51"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@ya.ru&gt;</source>
+        <translation>Yazan: Ilya Kotov &lt;forkotov02@ya.ru&gt;</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="52"/>
+        <source>Based on the source code from the Goom project</source>
+        <translation>Goom projesinden kaynak koda dayanarak</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="53"/>
+        <source>Goom project developers:</source>
+        <translation>Goom projesi geliştiricileri:</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="54"/>
+        <source>Jean-Christophe Hoelt &lt;jeko@ios-software.com&gt;</source>
+        <translation>Jean-Christophe Hoelt &lt;jeko@ios-software.com&gt;&#xa0;</translation>
+    </message>
+    <message>
+        <location filename="../visualgoomfactory.cpp" line="55"/>
+        <source>Guillaume Borios &lt;gyom@ios-software.com&gt;</source>
+        <translation>Guillaume Borios &lt;gyom@ios-software.com&gt;</translation>
+    </message>
+</context>
+</TS>

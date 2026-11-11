@@ -1,0 +1,70 @@
+#!/bin/sh
+
+if [ ! -d "cache" ]; then
+mkdir cache
+fi
+
+
+cd cache
+
+echo "Receiving sources.."
+if [ ! -d "qmmp-plugin-pack-qt5-svn" ]; then
+svn checkout svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-plugin-pack-1.7/ qmmp-plugin-pack-qt5-svn
+fi
+
+cd qmmp-plugin-pack-qt5-svn
+svn up
+echo "Creating changelog.."
+LC_MESSAGES=C svn log > ChangeLog.svn
+
+VERSION=`cat qmmp-plugin-pack.pri | grep "^QMMP_PLUGIN_PACK_VERSION =" | cut -d " " -f3`
+
+TARBALL=qmmp-plugin-pack-$VERSION
+
+
+echo Sources name: $TARBALL
+
+cd ..
+if [ -d $TARBALL ]; then
+echo "Removing previous directory.."
+rm -rf $TARBALL
+fi
+
+echo "Copying sources.."
+cp -r qmmp-plugin-pack-qt5-svn $TARBALL
+
+cd $TARBALL
+
+echo "Removing svn tags.."
+rm -rf .svn
+
+echo "Fixing versions.."
+sed 's/SET(SVN_VERSION TRUE)/SET(SVN_VERSION FALSE)/' -i CMakeLists.txt
+sed 's/CONFIG += SVN_VERSION/#CONFIG += SVN_VERSION/' -i qmmp-plugin-pack.pri
+cd ..
+
+echo "Creating tarball.."
+tar vcjf ${TARBALL}.tar.bz2 ${TARBALL}/
+
+echo "Removing temporary directory.."
+rm -rf ${TARBALL}
+
+echo "Creating md5 sum.."
+md5sum -b ${TARBALL}.tar.bz2 > ${TARBALL}.tar.bz2.md5sum
+
+echo "Moving released files.."
+cd ..
+
+PARENT_DIR=`echo $VERSION |  cut -d "." -f1,2`
+
+mkdir -p files/qmmp-plugin-pack/${PARENT_DIR}
+mv cache/${TARBALL}.tar.bz2 files/qmmp-plugin-pack/${PARENT_DIR}/
+mv cache/${TARBALL}.tar.bz2.md5sum files/qmmp-plugin-pack/${PARENT_DIR}/
+
+echo ""
+echo "****** RELEASED FILES *******"
+echo "Tarball: ${TARBALL}.tar.bz2"
+echo "MD5: ${TARBALL}.tar.bz2.md5sum"
+echo "*****************************"
+echo ""
+echo "Finished"

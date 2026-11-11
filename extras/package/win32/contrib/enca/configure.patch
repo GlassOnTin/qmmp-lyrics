@@ -1,0 +1,30 @@
+diff -U3 -r enca-1.21-old/configure.ac enca-1.21-new/configure.ac
+--- enca-1.21-old/configure.ac	2025-10-20 18:33:40 +0300
++++ enca-1.21-new/configure.ac	2026-05-20 22:23:27 +0300
+@@ -100,6 +100,14 @@
+ dnl Checks for libraries.
+ ye_CHECK_LIBM
+ 
++LIBENCA_LDFLAGS=""
++case "$host_os" in
++  mingw*)
++    LIBENCA_LDFLAGS="-no-undefined ${wl}-no-undefined ${wl}-export-all-symbols" ;;
++esac
++AC_MSG_RESULT([$LIBENCA_LDFLAGS])
++AC_SUBST([LIBENCA_LDFLAGS])
++
+ dnl Checks for header files.
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+diff -U3 -r enca-1.21-old/lib/Makefile.am enca-1.21-new/lib/Makefile.am
+--- enca-1.21-old/lib/Makefile.am	2025-10-20 18:33:40 +0300
++++ enca-1.21-new/lib/Makefile.am	2026-05-20 22:23:27 +0300
+@@ -6,7 +6,7 @@
+ # Any iface change    C++: 0:   A
+ # Adding ifaces       C:   R:   A++
+ # Changing ifaces     C:   R:   0
+-libenca_la_LDFLAGS = -version-info 5:1:5
++libenca_la_LDFLAGS = @LIBENCA_LDFLAGS@ -version-info 5:1:5
+ libenca_la_SOURCES = \
+   common.c \
+   ctype.c \
